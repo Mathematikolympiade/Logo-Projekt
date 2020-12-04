@@ -1,9 +1,11 @@
 \documentclass[11pt]{article}  
-\usepackage{a4wide,ngerman,url,amsmath,bbm,graphicx}
+\usepackage{a4wide,ngerman,url,amsmath,bbm,graphicx,enumitem}
 \usepackage[utf8]{inputenc}
 
 \newcommand{\br}[1]{\ensuremath{\left(#1\right)}}
+\newcommand{\ii}{\mathrm{i}}
 \newcommand{\N}{\mathbbm{N}}
+\newcommand{\Z}{\mathbbm{Z}}
 \newcommand{\ggT}{\mathrm{ggT}}
 \newcommand{\HGG}[1]{\begin{quote} Einfügen: #1 \end{quote}}
 
@@ -177,109 +179,118 @@ des regulären Achtecks zu sehen:
 
 Einige Beispiele dafür:
 \begin{align*}  
-  &\cos \left(\frac{2\pi}{3}\right)=\frac{1}{2},\\
-  &\cos \left(\frac{2\pi}{5}\right)=\frac{1}{2}\left(-1+\sqrt{5}\right).
+  &\cos\br{\frac{2\pi}{3}}=\frac{1}{2},\\
+  &\cos\br{\frac{2\pi}{5}}=\frac{1}{2}\br{-1+\sqrt{5}}.
 \end{align*}
-Eine Darstellung von $\cos \left(\frac{2\pi}{7}\right)$ in ähnlicher Form als
-endlich langer Term, bestehend aus reellen Zahlen, evtl. verknüpft durch die
-vier Grundrechenarten und Quadratwurzeln sowie Verschachtelungen davon, ist
-nicht möglich (siehe oben). 
+Eine Darstellung von $\cos\br{\frac{2\pi}{7}}$ in ähnlicher Form als endlich
+langer Term, bestehend aus reellen Zahlen, evtl. verknüpft durch die vier
+Grundrechenarten und Quadratwurzeln sowie Verschachtelungen davon, ist nicht
+möglich (siehe oben).
 \begin{align*}
-  \cos \left(\frac{2\pi}{17}\right)&= \frac{1}{16}
-  \Bigg(-1+\sqrt{17}+\sqrt{{2\left(17-\sqrt{17}\right)}}+\\
-  &\qquad 2\sqrt{17+3\sqrt{17}-\sqrt{2\left(17-\sqrt{17}\right)}
-    -2\sqrt{2\left(17+\sqrt{17}\right)}}\Bigg) 
+  \cos\br{\frac{2\pi}{17}}&= \frac{1}{16}
+  \Bigg(-1+\sqrt{17}+\sqrt{{2\br{17-\sqrt{17}}}}+\\ &\qquad
+  2\sqrt{17+3\sqrt{17}-\sqrt{2\br{17-\sqrt{17}}}
+    -2\sqrt{2\br{17+\sqrt{17}}}}\Bigg)
 \end{align*}
 Ein mit \textsc{Mathematica} Version 5.2 erstellter symbolischer Ausdruck von
 $\cos(2\pi/257)$ (pdf-Datei \texttt{cos2pi\_257\_symbolisch.pdf}, etwa 640
 KByte) sei nach Auskunft des Softwareherstellers durch einen Bug fehlerhaft.
-Eine Umwandlung von $\cos\left(\frac{2\pi}{257}\right)$ in einen symbolischen
-Ausdruck mit verschachtelten Quadratwurzeln erfolgt in neueren Versionen nicht
-mehr. Es wird nur die Äquivalenz
+Eine Umwandlung von $\cos\br{\frac{2\pi}{257}}$ in einen symbolischen Ausdruck
+mit verschachtelten Quadratwurzeln erfolgt in neueren Versionen nicht mehr. Es
+wird nur die Äquivalenz
 \begin{gather*}
-  \cos\left(\frac{2\pi}{257}\right)=
-  -\frac{1}{2}\left(\left(-1\right)^{\frac{255}{257}}\cdot
-  \left(1+\left(-1\right)^{\frac{4}{257}}\right)\right)
+  \cos\br{\frac{2\pi}{257}}= -\frac{1}{2}\br{\br{-1}^{\frac{255}{257}}\cdot
+    \br{1+\br{-1}^{\frac{4}{257}}}}
 \end{gather*}
 ausgegeben.
-\end{document}
 
 Es gibt auch einen interessanten Bezug zur Graphentheorie. Um ein reguläres
 Polygon zu konstruieren, reicht es, wie oben beschrieben, wenn man den
-Bestimmungswinkel des regulären n-Ecks kennt. Dieser ergibt sich, wenn man
-neben einem frei wählbaren Eckpunkt, sozusagen einen trivialen Eckpunkt, einen
+Bestimmungswinkel des regulären $n$-Ecks kennt. Dieser ergibt sich, wenn man
+neben einem frei wählbaren Eckpunkt, sozusagen einem trivialen Eckpunkt, einen
 weiteren benachbarten Eckpunkt kennt. Somit sind dann alle Eckpunkte
-konstruierbar. Das bedeutet, es sind, wenn die Eckenazahl n eine FERMATsche
-Primzahl ist, 5 - 1 = 4 = 2^2, 17 - 1 = 16 = 2^4, 257 - 1 = 256 = 2^8 oder
-65537 - 1 = 65536 = 2^{16} "nichttriviale" Eckpunkte zu konstruieren. Wie die
-nachstehende Abbildung zeigt, kann man sich das anhand vollständiger binärer
-Bäume gut veranschaulichen. Wie in unten stehenden Abschnitten erklärt wird,
-muss man verschachtelte quadratische Gleichungen lösen, die in unseren
-betrachteten Fällen stets zwei reelle Lösungen besitzen. Jeder Knoten
-entspricht einer dieser quadratischen Gleichungen, die beiden Kindknoten des
-betrachteten Knotens weiteren quadratischen Gleichungen, die sich aus den
-beiden Lösungen der betrachteten quadratischen Gleichung ergeben. Die
-"nichttrivialen" Eckpunkte sind dann die 2^{\left({2^k} \right)} Blätter des
-Baumes der Höhe 2^k (k = 1; 2; ...; 5).
+konstruierbar. Das bedeutet, es sind, wenn die Eckenanzahl $n$ eine FERMATsche
+Primzahl ist, 
+\begin{gather*}
+  5 - 1 = 4 = 2^2, 17 - 1 = 16 = 2^4, 257 - 1 = 256 = 2^8 oder 65537 - 1 =
+  65536 = 2^{16}
+\end{gather*}
+„nichttriviale“ Eckpunkte zu konstruieren. Wie die nachstehende Abbildung
+zeigt, kann man sich das anhand vollständiger binärer Bäume gut
+veranschaulichen. Wie weiter unten erklärt wird, muss man verschachtelte
+quadratische Gleichungen lösen, die in unseren betrachteten Fällen stets zwei
+reelle Lösungen besitzen. Jeder Knoten entspricht einer dieser quadratischen
+Gleichungen, die beiden Kindknoten des betrachteten Knotens weiteren
+quadratischen Gleichungen, die sich aus den beiden Lösungen der betrachteten
+quadratischen Gleichung ergeben. Die „nichttrivialen“ Eckpunkte sind dann die
+$2^{\br{2^k}}$ Blätter des Baumes der Höhe $2^k$ ($k = 1,2,\ldots,5$).
+\begin{center}
+  \includegraphics[width=.7\textwidth]{Baum.jpg}
+\end{center}
 
-Baum
-
-Reguläres 17-Eck:
+\paragraph{Reguläres 17-Eck:}
 Die praktische Umsetzung der Konstruktion des regulären 17-Ecks und des
 regulären 257-Ecks wurde von GAUSS nicht erbracht, sondern für das reguläre
-17-Eck erstmalig 1825 von ERCHINGER [6]. Eine illustrierte
-Konstruktionsbeschreibung des regulären 17-Ecks als pdf-Datei findet sich
-hier.
+17-Eck erstmalig 1825 von ERCHINGER [6]. Für eine illustrierte
+Konstruktionsbeschreibung des regulären 17-Ecks als pdf-Datei siehe
+\texttt{17Eck.pdf}.
 
-
-Reguläres 257-Eck:
+\paragraph{Reguläres 257-Eck:}
 Die erste Konstruktion des regulären 257-Ecks beschrieb 1819, gedruckt 1822,
 PAUCKER (1787-1855) [7, 8], später 1832 [9] RICHELOT (1808-1875). Für die
 Konstruktion des regulären 257-Ecks folgten später weitere Arbeiten (deTEMPLE
-1991 [10], GOTTLIEB 1999 [11]), die u. a. das Ziel hatten, die Anzahl der zur
+1991 [10], GOTTLIEB 1999 [11]), die u.a. das Ziel hatten, die Anzahl der zur
 Konstruktion nötigen Kreise und Geraden zu reduzieren. PAUCKER zitiert aus
-einem Brief von GAUSS an ihn3 von 1820, worin GAUSS auf eigene Überlegungen
+einem Brief von GAUSS an ihn (3) von 1820, worin GAUSS auf eigene Überlegungen
 und Rechnungen zum regulären 257-Eck im Jahre 1796 hinweist. PAUCKER
 vergleicht seine Ausdrücke mit denen von GAUSS und bemerkt strukturelle
 Übereinstimmung in den Gleichungen, nur die Bezeichnungen waren
 unterschiedlich. Das sollte bedeuten, dass bereits GAUSS einen gleichen oder
 vergleichbaten Ansatz zur Herleitung verwendet hatte. GAUSS verweist explizit
-auf die Verwendung der Primitivwurzel 3.([8], S. 217-219). PAUCKER benutzt als
-erster auch die Schreibweise mit den indizierten Buchstaben A, B, ..., G, wie
-sie auch hier in der Herleitung verwendet wird.
+auf die Verwendung der Primitivwurzel 3 ([8], S. 217-219). PAUCKER benutzt als
+erster auch die Schreibweise mit den indizierten Buchstaben $A, B, ..., G$,
+wie sie auch hier in der Herleitung verwendet wird.
 
 Zur analytischen Herleitung siehe unten.
 
-Eine Vorstellung von der Konstruktion des regulären 257-Ecks4 im
+Eine Vorstellung von der Konstruktion des regulären 257-Ecks (4) im
 Internetzeitalter liefert dieses Video (mp4-Format - etwa 40 MByte, avi-Format
-- etwa 400 MByte). Mit Hilfe des modernen interaktiven Geometrieprogramms
-"Geogebra" ( Downloadmöglichkeit) wurde die Konstruktion vom Autor auf der
+- etwa 400 MByte Quelle zu ergänzen). Mit Hilfe des modernen interaktiven
+Geometrieprogramms \emph{Geogebra} wurde die Konstruktion vom Autor auf der
 Grundlage von [12] und damit von [10] durchgeführt. Zur Lösung der vielfach zu
 lösenden quadratischen Gleichungen wurde ein auch für die Schulmathematik
 interessanter Ansatz verwendet: Die Kreise von CARLYLE (1795-1881) [13]. Das
 Prinzip ist aus der Abbildung zu erkennen.
 
-Kreis von Carlyle
+\begin{center}
+  \includegraphics[width=.7\textwidth]{CarlyleKreis.jpg}
+\end{center}
 
 Mit einigen Hilfsschritten benötigt man für die Konstruktion der Seitenlänge
 rund 380 Schritte, für das komplette 257-Eck etwa 1170 Schritte. Die
-Konstruktion der Mittelsenkrechten einer Strecke wird dabei häufig
-benötigt. Diese ist als "Werkzeug", gewissermaßen als Macro, vordefiniert, und
-lässt sich sehr bequem in "Geogebra" nutzen. Bei ausschließlicher Verwendung
-von Kreisen und Geraden ist die Anzahl der Konstruktionsschritte deutlich
-größer. "Geogebra" arbeitet intern mit gerundeten Dezimalzahlen, also nicht
-mit symbolischen Ausdrücken. Die Anzahl der Dezimalstellen kann man wählen. Im
-Video sieht man bei einen Blick in das Algebrafenster mit welch hoher
-numerischen Stabilität (vom Autor 12 Nachkommastellen gewählt) das Programm
-für jede der 257 gleich langen Seiten gleiche Werte (0,02444758303)
+Konstruktion der Mittelsenkrechten einer Strecke wird dabei häufig benötigt.
+Diese ist als \emph{Werkzeug}, gewissermaßen als Macro, vordefiniert, und
+lässt sich sehr bequem in \emph{Geogebra} nutzen. Bei ausschließlicher
+Verwendung von Kreisen und Geraden ist die Anzahl der Konstruktionsschritte
+deutlich größer. \emph{Geogebra} arbeitet intern mit gerundeten Dezimalzahlen,
+also nicht mit symbolischen Ausdrücken. Die Anzahl der Dezimalstellen kann man
+wählen. Im Video sieht man bei einen Blick in das Algebrafenster, mit welch
+hoher numerischen Stabilität (vom Autor 12 Nachkommastellen gewählt) das
+Programm für jede der 257 gleich langen Seiten gleiche Werte (0.02444758303)
 ausrechnet.
 
 Zwei kleine Hinweise dazu:
+\begin{itemize}[noitemsep]
+\item Unter Verwendung der minimalen Schrittzeit von 1s bei der Darstellung
+  einer Konstruktion in Geogebra dauert die Konstruktion auch etwa 1170 s,
+  also etwa 20 min. Der mögliche Schnelldurchlauf des Videos gestattet eine
+  deutliche Verringerung dieser Zeit.
+\item Dem Betrachter wird durch das Video auch die Auswahl einer geeigneten
+  Vergrößerung abgenommen, um die während der Konstruktion relevanten Objekte
+  gut sichtbar werden zu lassen.
+\end{itemize}
 
-- Unter Verwendung der minimalen Schrittzeit von 1s bei der Darstellung einer Konstruktion in Geogebra dauert die Konstruktion auch etwa 1170 s, also etwa 20 min. Der mögliche Schnelldurchlauf des Videos gestattet eine deutliche Verringerung dieser Zeit.
-- Dem Betrachter wird durch das Video auch die Auswahl einer geeigneten Vergrößerung abgenommen, um die während der Konstruktion relevanten Objekte gut sichtbar werden zu lassen.
-
-Analytische Herleitung der Konstruktion des regulären 257-Ecks
+\subsection*{Analytische Herleitung der Konstruktion des regulären 257-Ecks}
 
 Die moderne Begründung der Konstruierbarkeit des regulären 257-Ecks mit Zirkel
 und Lineal erfolgt durch Folgerungen aus der GALOIS-Theorie. Der geneigte
@@ -287,57 +298,78 @@ Leser sei auf einschlägige Arbeiten verwiesen, u. a. in Kurzform [14],
 ausführlicher BISHOP [15] mit Anmerkungen zur Konstruktion des regulären
 257-Ecks.
 
-
 Die Konstruktion soll mit einfacheren Mittel begründet und nachvollziehbar
 hergeleitet werden. Wesentliche Stütze ist die Arbeit von deTEMPLE [10].
 
-
 Der Mittelpunkt des 257-Ecks liegt im Ursprung eines komplexen
-Koordinatensystems, d. h. die reellen Zahlen finden sich auf der
-Abszissenachse und die Vielfachen von \mathrm{i} mit \mathrm{i}^{2}=-1 auf der
-Ordinatenachse.
+Koordinatensystems, d.h. die reellen Zahlen finden sich auf der Abszissenachse
+und die Vielfachen von $\ii$ mit $\ii^{2}=-1$ auf der Ordinatenachse.
 
 Alle Eckpunkte des 257-Ecks liegen auf einen Kreis. Zur Vereinfachung wählt
-man den Einheitskreis mit dem Radius r = 1. Das 257-Eck wird so gedreht, dass
-ein Eckpunkt der Punkt (0; 1) ist. Die Eckpunkte des 257-Ecks erfüllen die
-komplexe Gleichung z^{257} = 1.
+man den Einheitskreis mit dem Radius $r = 1$. Das 257-Eck wird so gedreht,
+dass ein Eckpunkt der Punkt $(0,1)$ ist. Die Eckpunkte des 257-Ecks erfüllen
+die komplexe Gleichung $z^{257} = 1$.
 
-Die Gleichung z^{257} =1 soll im Bereich der komplexen Zahlen gelöst werden,
-also z^{257} - 1 = 0. Der Winkel \alpha mit dem Scheitelpunkt im Ursprung des
-Koordinatensystems zwischen Abszissenachse und Strahl durch den Punkt P_{\:1},
-beträgt in Bogenmaß \alpha= \frac{2\pi}{257}. Also ist z = \cos\: \alpha +
-\textrm{i} \: \sin \:\alpha.
+Die Gleichung $z^{257} =1$ soll im Bereich der komplexen Zahlen gelöst werden,
+also $z^{257} - 1 = 0$. Der Winkel $\alpha$ mit dem Scheitelpunkt im Ursprung
+des Koordinatensystems zwischen Abszissenachse und Strahl durch den Punkt
+$P_1$, beträgt in Bogenmaß $\alpha= \frac{2\pi}{257}$. Also ist $z =
+\cos(\alpha) + \ii\sin(\alpha)$.
 
-So ist nach der EULERschen Identität z =
-\textrm{e}^{\frac{2\pi\:\textrm{i}}{257}}. Es ist überhaupt nicht schwierig,
-wenn man es mit komplexen Zahlen zu tun hat. Man kann über den Realteil von z,
-also \cos\: \alpha, der auf der Abszissenachse zu finden ist, den Schnittpunkt
-mit dem Einheitskreis finden. Dieser Punkt ist dann einer der Eckpunkte des
-regulären 257-Ecks.
+So ist nach der EULERschen Identität $z =
+\mathrm{e}^{\frac{2\pi\ii}{257}}$.  Es ist überhaupt nicht schwierig,
+wenn man es mit komplexen Zahlen zu tun hat. Man kann über den Realteil von
+$z$, also $\cos(\alpha)$, der auf der Abszissenachse zu finden ist, den
+Schnittpunkt mit dem Einheitskreis finden. Dieser Punkt ist dann einer der
+Eckpunkte des regulären 257-Ecks.
 
-Im Bereich der komplexen Zahlen hat die Gleichung z^{257} = 1 nach dem
+Im Bereich der komplexen Zahlen hat die Gleichung $z^{257} = 1$ nach dem
 GAUSSschen Fundamentalsatz der Algebra 257 Lösungen. Wie man sofort sieht, ist
-z = 1 eine (triviale) reelle Lösung. Die anderen 256 Lösungen ergeben sich
-durch Zerlegen in Linearfaktoren mittels Polynomdivision:
+$z = 1$ eine (triviale) reelle Lösung. Die anderen 256 Lösungen ergeben sich
+als Nullstellen des Polynoms
+\begin{gather*}
+   \frac{\br{z - 1}^{257}}{z - 1} = z^{256} + z^{255} + \ldots + z^3 + z^2 + z
+   + 1.
+\end{gather*}
+Bei Division einer ganzen Zahl durch 257 können sich 257 verschiedene Reste
+$(0, 1, \ldots, 256)$ ergeben. Man fasst alle ganzen Zahlen, die bei Division
+durch eine feste natürliche Zahl $p$, hier 257, denselben Rest lassen, zu
+einer Menge zusammen. Es gibt also in unserem Fall 257 paarweise verschiedene
+solcher Mengen. Man sagt dann, dass zwei Elemente einer Menge kongruent modulo
+der ganzen Zahl $p$ sind. Die Kongruenz modulo einer ganzen Zahl ist eine
+Äquivalenzrelation, daher kann man die Mengen gleichen Restes als Klassen
+bezeichnen, kurz Restklassen. Die Menge der Restklassen modulo 257 bildet
+bezüglich der Multiplikation eine besondere algebraische Struktur, eine
+endliche Gruppe, genannt Restklassengruppe $\Z_{257}$. Unter bestimmten
+Voraussetzungen kann man die Elemente einer Gruppe mit einem erzeugenden
+Element vollständig errechnen. Diese sind hier gegeben. Die Restklassengruppe
+$\Z_{257}$ kann zyklisch erzeugt werden. Es sei $a$ Element von $\Z_{257}$. Es
+gibt eine natürliche Zahl $g$, für die gilt
+\begin{gather*}
+  a = a^{g^0}, a^{g^1}, a^{g^2}, a^{g^3}, \ldots, a^{g^{258}} = a^1 
+\end{gather*}
+oder kurz: Jede Restklasse modulo 257 kann als Potenz von $a$ geschrieben
+werden, wobei der Exponent modulo 257 ist. Geometrisch ausgedrückt heißt das,
+wenn man neben dem trivialen Punkt $(0,1)$ einen weiteren Punkt des 257-Ecks
+kennt, kann man aus dessen Lage alle restlichen 255 Punkte finden. Das wird
+bei der Konstruktion des 257-Ecks ausgenutzt. Eine solche Zahl $g$ heißt
+\emph{Primitivwurzel modulo 257}. Für alle (bekannten) FERMATschen Primzahlen
+außer 3 ist 3 eine Primitivwurzel. Also ist
+\begin{align*}
+  z^1 = a,& z^2 = a^{3 \pmod{257}}= a^3, z^3 = a^{9 \pmod{257}} =a^9, z^4 =
+  a^{27 \pmod{257}} = a^{27}, \ldots,\\& z^{257} = a^{3^{256} \pmod{257}} =
+  a^{86}.
+\end{align*}
 
-\left(z - 1\right)^{257} /\left(z - 1\right) = z^{256} + z^{255} + \ldots +
-z^3 + z^2 + z + 1 = 0.
-
-Bei Division einer ganzen Zahl durch 257 können sich 257 verschiedene Reste (0, 1, ..., 256) ergeben. Man fasst alle ganzen Zahlen, die bei Division durch eine feste natürliche Zahl p, hier 257, denselben Rest lassen, zu einer Menge zusammen. Es gibt also in unserem Fall 257 paarweise verschiedene solcher Mengen. Man sagt dann, dass zwei Elemente einer Menge kongruent modulo der ganzen Zahl p sind. Die Kongruenz modulo einer ganzen Zahl ist eine Äquivalenzrelation, daher kann man die Mengen gleichen Restes als Klassen bezeichnen, kurz Restklassen. Die Menge der Restklassen modulo 257 bildet bezüglich der Multiplikation eine besondere algebraische Struktur, eine endliche Gruppe, genannt Restklassengruppe Z_{257}. Unter bestimmten Voraussetzungen kann man die Elemente einer Gruppe mit einem erzeugenden Element vollständig errechnen. Diese sind hier gegeben. Die Restklassengruppe Z_{257} kann zyklisch erzeugt werden. Es sei a Element von Z_{257}. Es gibt eine natürliche Zahl g für die gilt a = a^{g^0}, a^{g^1}, a^{g^2}, a^{g^3}, \ldots, a^{g^{258}} = a^1 oder kurz: Jede Restklasse modulo 257 kann als Potenz von a erzeugt werden, wobei der Exponent modulo 257 ist. Geometrisch ausgedrückt heißt das, wenn man neben dem trivialen Punkt (0;1) einen weiteren Punkt des 257-Ecks kennt, kann man aus dessen Lage alle restlichen 255 Punkte finden. Das wird bei der Konstruktion des 257-Ecks ausgenutzt. Eine solche Zahl g heißt Primitivwurzel modulo 257. Für alle (bekannten) FERMATschen Primzahlen außer 3 ist 3 eine Primitivwurzel. Also ist z^1 = a, z^2 = a^{3 \: mod \: 257}= a^3, z^3 = a^{9 \: mod \: 257} =a^9, z^4 = a^{27 \: mod \: 257} = a^{27}, z^5 = a^{81 \: mod \: 257} = a^{81}, z^6 = a^{243 \: mod \:257} = a^{243}, z^7= a^{729 \: mod\: 257} = a^{215}, z^8= a^{2187 \: mod \:257} = a^{165}, \ldots,
-z^{257} =
-a^{46336150792381577588313262263220434371406283602843045997201608143345357543255478647000589718036536507270555180182966478507
-  \: mod \: 257} = a^{86}.
-
-
-Bei endlichen Mengen versteht man unter der Mächtigkeit einer Menge M die
-Anzahl der Elemente von M. Aus der Rechnung mit Restklassen lässt sich
+Bei endlichen Mengen versteht man unter der Mächtigkeit einer Menge $M$ die
+Anzahl der Elemente von $M$. Aus der Rechnung mit Restklassen lässt sich
 offensichtlich problemlos der folgende Satz ableiten:
-
-Es sei i die Mächtigkeit der Menge M_n der Restklassen mod n, j die
-Mächtigkeit der Menge M_{2n} der Restklassen mod 2i, so ist j = 2 \cdot i und
-M_n \subset M_{2n} (**)
-
-Zur Veranschaulichung: Ein Zifferblatt einer Analogunhr ist häufig in 12
+\begin{quote}
+  \textbf{Satz:} Es sei $i$ die Mächtigkeit der Menge $M_n$ der Restklassen
+  $\pmod{n}$, $j$ die Mächtigkeit der Menge $M_{2n}$ der Restklassen
+  $\pmod{2n}$, so ist $j = 2 \cdot i$ und $M_n \subset M_{2n}$.
+\end{quote}
+Zur Veranschaulichung: Ein Zifferblatt einer Analoguhr ist häufig in 12
 gleiche große Winkel eingeteilt. Wir geben nicht die Gesamtzahl der Stunden
 seit irgendeinem Starttermin an, sondern die Restklasse mod 12. Diese ist auf
 dem Zifferblatt ablesbar, z. B. als Punkt oder Strecke auf dem Schenkel des
@@ -346,7 +378,7 @@ soll in Halbstunden eingeteilt werden. Es kommen also zusätzlich zu den
 bestehenden 12 Restklassen noch 12 neue Restklassen hinzu. Die Anzahl der
 Restklassen verdoppelt sich. Die ehemaligen 12 Restklassen gibt es auch bei
 der neuen Einteilung noch.
-
+\end{document}
 
 Wie findet man eine nichttriviale Lösung der Gleichung z^{256} - 1 = 0?
 Ein möglicher Ansatz ist die Zerlegung der Menge der 256 Lösungen in zwei
