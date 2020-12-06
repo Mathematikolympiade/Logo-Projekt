@@ -24,9 +24,9 @@
   \url{Konstruktion17/index.html}
 
   Dort auch ein Video zur Konstruktion des regulären 257-Ecks, Impressionen
-  zum legendären Koffer mit der Arbeit zum 65537-Eck von HERMES in Göttingen. 
+  zum legendären Koffer mit der Arbeit zum 65537-Eck von \textsc{Hermes} in
+  Göttingen.
 \end{quote}
-
 Reguläre Polygone oder $n$-Ecke sind solche $n$-Ecke mit gleicher Seitenlänge
 $a_n$.  Die klassischen Konstruktionswerkzeuge nach \textsc{Euklid} (etwa 365
 v. Chr. bis etwa 300 v. Chr.) sind Zirkel und Lineal (ohne Messfunktion).
@@ -46,20 +46,21 @@ Systeme, sofern diese existieren, sind also endlich lange Terme, die reelle
 Zahlen, evtl. verknüpft durch die vier Grundrechenarten und Quadratwurzeln
 sowie Verschachtelungen davon enthalten. (Siehe z. B. den Ausdruck (1)).
 
-Größtenteils bereits seit dem Altertum (EUKLID) sind Konstruktionen mit Zirkel
-und Lineal u. a. für einige reguläre $n$-Ecke bekannt, insbesondere für das
-reguläre 3-, 4- und 5-Eck: Man erkennt sofort die „Verwandtschaft“ der
+Größtenteils bereits seit dem Altertum (\textsc{Euklid}) sind Konstruktionen
+mit Zirkel und Lineal u. a. für einige reguläre $n$-Ecke bekannt, insbesondere
+für das reguläre 3-, 4- und 5-Eck: Man erkennt sofort die „Verwandtschaft“ der
 regulären $n$-Ecke in den „Familien“ der regulären 3-, 6-, 12-, 24-, ... -Ecke
 oder der 4-, 8-, 16-, ... -Ecke oder der 5-, 10-, 20-, ... -Ecke.
 
 Durch geschickte Kombination ließen sich z. B. auch reguläre 15-Ecke
-konstruieren: Nach dem Lemma von BÉZOUT (1730--1783) gibt es für zwei
+konstruieren: Nach dem Lemma von \textsc{Bézout} (1730--1783) gibt es für zwei
 natürliche Zahlen $a$ und $b$, hier 3 und 5, zwei ganze Zahlen $s$ und $t$, so
 dass sich der größte gemeinsame Teiler $\mathrm{ggT}(a,b)$ der Zahlen $a$ und
-$b$ als $\ggT(a;b) = s \cdot a + t \cdot b$ darstellen lässt. Da Primzahlen
-und somit auch FERMATsche Primzahlen stets teilerfremd zueinander sind, ist
-$\ggT(3; 5) = 1$. So ist $1 = s \cdot 3 + t \cdot 5$. Man kann die Zahlen $s$
-und $t$ mit dem erweiterten EUKLIDischen Algorithmus bestimmen:
+$b$ als $\ggT(a,b) = s \cdot a + t \cdot b$ darstellen lässt. Da Primzahlen
+und somit auch \textsc{Fermat}sche Primzahlen stets teilerfremd zueinander
+sind, ist $\ggT(3,5) = 1$. So ist $1 = s \cdot 3 + t \cdot 5$. Man kann die
+Zahlen $s$ und $t$ mit dem erweiterten \textsc{Euklid}ischen Algorithmus
+bestimmen:
 \begin{align*}  
   5 : 3 &= 1\ \text{Rest}\ 2 & 	2 &= 5 - 1 \cdot 3\\{}
   3 : 2 &= 1\ \text{Rest}\ 1 &	1 &= 3 - 1 \cdot 2\\{}
@@ -81,40 +82,44 @@ Sofort fällt auf, dass in diesen Mengen u. a. das reguläre 7-, 9- und 17-Eck
 nicht enthalten sind. Bis zum Ende des 18. Jahrhunderts war die Frage der
 Konstruierbarkeit dieser regulären $n$-Ecke ungelöst.
 
-GAUSS (1777-1855) konnte dieses Problem lösen. Er schrieb 1819 dazu: „Die
-Geschichte jener Entdeckung ist bisher nirgends von mir öffentlich erwähnt,
-ich kann es aber sehr genau angeben. Der Tag war der 29. März 1796, und der
-Zufall hatte gar keinen Anteil daran. Schon früher war alles ... von mir
-gefunden ..., und zwar im Winter 1796 (meinem ersten Semester in Göttingen),
-ohne daß ich den Tag aufgezeichnet hätte. Durch angestrengtes Nachdenken über
-den Zusammenhang aller Wurzeln (heutiger Begriff: Lösungen -- d. A.)
-untereinander nach arithmetischen Gründen glückte es mir, bei einem
-Ferienaufenthalt in Braunschweig am Morgen des gedachten Tages (ehe ich aus
-dem Bette aufgestanden war) diesen Zusammenhang auf das klarste anzuschauen,
-so daß ich die spezielle Anwendung auf das 17-Eck und die numerische
-Bestätigung auf der Stelle machen konnte.“ ([1], sinnwahrend vom Autor
-gekürzt.)
+\textsc{Gauss} (1777-1855) konnte dieses Problem lösen. Er schrieb 1819 dazu:
+„Die Geschichte jener Entdeckung ist bisher nirgends von mir öffentlich
+erwähnt, ich kann es aber sehr genau angeben. Der Tag war der 29. März
+1796\footnote{\textsc{Gauss} gibt in diesem Brief den 30. März als Tag seiner
+  Entdeckung der Kreisteilung an, ein Tag später als in der zitierten Aussage
+  \cite[S. 219]{Paucker1822}.}, und der Zufall hatte gar keinen Anteil
+daran. Schon früher war alles ... von mir gefunden ..., und zwar im Winter
+1796 (meinem ersten Semester in Göttingen), ohne daß ich den Tag aufgezeichnet
+hätte. Durch angestrengtes Nachdenken über den Zusammenhang aller Wurzeln
+(heutiger Begriff: Lösungen -- d. A.)  untereinander nach arithmetischen
+Gründen glückte es mir, bei einem Ferienaufenthalt in Braunschweig am Morgen
+des gedachten Tages (ehe ich aus dem Bette aufgestanden war) diesen
+Zusammenhang auf das klarste anzuschauen, so daß ich die spezielle Anwendung
+auf das 17-Eck und die numerische Bestätigung auf der Stelle machen konnte.“
+(\cite[S. 15\,f]{GaussTagebuch}, sinnwahrend vom Autor gekürzt.)
 
 Der im Text beschriebene Ausdruck ist: 
 \begin{align*}
   \cos\br{\frac{2\pi}{17}}&= \frac{1}{16}
   \Bigg(-1+\sqrt{17}+\sqrt{{2\br{17-\sqrt{17}}}}+\\ &\qquad
   2\sqrt{17+3\sqrt{17}-\sqrt{2\br{17-\sqrt{17}}}-2\sqrt{2\br{17+\sqrt{17}}}}
-  \Bigg) \tag{1}.
+  \Bigg) \tag{1}
 \end{align*}
 
 Es sei auf die ausführliche lesenswerte Herleitung der Gleichung durch
-PATSCHKE [2] verwiesen. Der Winkel $\frac{2\pi}{17}$ ist der in Bogenmaß
-ausgedrückte Bestimmungswinkel des regulären 17-Ecks.
+Patzschke \cite{Patzschke2002} verwiesen. Der Winkel $\frac{2\pi}{17}$ ist der
+in Bogenmaß ausgedrückte Bestimmungswinkel des regulären 17-Ecks.
 
-Ausführlich hat GAUSS seine Theorie in seinem Werk „Disquisitiones
+Ausführlich hat \textsc{Gauss} seine Theorie in seinem Werk „Disquisitiones
 arithmeticae“ 1801 dargestellt: Ausgangspunkt ist die Vorstellung, dass die
 Konstruktion des regulären $n$-Ecks im Einheitskreis äquivalent zur Bestimmung
 der Lösungen der Kreisteilunggleichung $x^n - 1 = 0$ ($n\in\N$) ist.
 
 Er fand dann die hinreichende Bedingung für die Konstruktion regelmäßiger
 Polygone. Er vermutete, dass die Bedingung auch notwendig ist, gab allerdings
-keinen Beweis an. WANTZEL (1814-1848) holte dies 1837 [3] nach.
+keinen Beweis an. \textsc{Wantzel} (1814-1848) holte dies 1837
+nach\footnote{\url{http://de.wikipedia.org/wiki/Wantzel} (abgerufen am
+  01.09.2011).}.
 
 Diese notwendige und hinreichende Bedingung für die Konstruierbarkeit des
 regulären $n$-Ecks an die Zahl $n$ lautet:
@@ -125,14 +130,14 @@ regulären $n$-Ecks an die Zahl $n$ lautet:
   Primzahlen.
 \end{quote}
 Diese speziellen Primzahlen sind nach dem französischen Mathematiker und
-Juristen FERMAT (1601--1665) benannt.
+Juristen \textsc{Fermat} (1601--1665) benannt.
 
 Potenzen von 2 sind 4, 8, 16, ...
 
 Man erkennt auch sofort die oben genannten „Familien“ konstruierbarer
 regulärer $n$-Ecke wieder.
 
-FERMATsche Primzahlen $n =2^{\br{2^k}}, k\in\N$.
+\textsc{Fermat}sche Primzahlen $n =2^{\br{2^k}}, k\in\N$.
 \begin{align*}
   k = 0 &\rightarrow{} n = 3\\
   k = 1 &\rightarrow{} n = 5\\
@@ -140,15 +145,18 @@ FERMATsche Primzahlen $n =2^{\br{2^k}}, k\in\N$.
   k = 3 &\rightarrow{} n = 257\\
   k = 4 &\rightarrow{} n = 65537
 \end{align*}
-Bis jetzt sind keine weiteren FERMATschen Primzahlen gefunden worden [4].
+Bis jetzt sind keine weiteren \textsc{Fermat}schen Primzahlen gefunden
+worden\footnote{\url{http://de.wikipedia.org/wiki/Fermat-Zahl} (abgerufen am
+  16.05.2012).}.
 
-Sollte es so sein, dass es genau diese fünf FERMATschen Primzahlen gibt, so
-folgt daraus unmittelbar, dass nur 31 (= $2^5 - 1$) regelmäßige Polygone mit
-ungerader Eckenzahl mit Zirkel und Lineal konstruierbar sind. Sollte es
-weitere FERMATsche Primzahlen, aber insgesamt nur endlich viele, geben, so
-bliebe die Anzahl mit Zirkel und Lineal konstruierbarer regelmäßiger $n$-Ecke
-mit ungeradem $n$ auch endlich. Diese Anzahl ist $2^m - 1$, dabei sei $m$ die
-Anzahl der FERMATschen Primzahlen.
+Sollte es so sein, dass es genau diese fünf \textsc{Fermat}schen Primzahlen
+gibt, so folgt daraus unmittelbar, dass nur 31 (= $2^5 - 1$) regelmäßige
+Polygone mit ungerader Eckenzahl mit Zirkel und Lineal konstruierbar
+sind. Sollte es weitere \textsc{Fermat}sche Primzahlen, aber insgesamt nur
+endlich viele, geben, so bliebe die Anzahl mit Zirkel und Lineal
+konstruierbarer regelmäßiger $n$-Ecke mit ungeradem $n$ auch endlich. Diese
+Anzahl ist $2^m - 1$, dabei sei $m$ die Anzahl der \textsc{Fermat}schen
+Primzahlen.
 
 Nun war klar, dass das reguläre 17-Eck, aber auch das reguläre 257-Eck und das
 reguläre 65537-Eck mit Zirkel und Lineal konstruierbar sind (siehe unten).
@@ -157,12 +165,14 @@ Somit waren die bekannten Konstruktionen theoretisch untermauert und es konnte
 $n$-Ecke nachgedacht werden.
 
 Besonders bemerkenswert ist die Verknüpfung verschiedener Teilgebiete der
-Mathematik durch GAUSS: Das Problem war geometrischer Natur, die Lösung des
-Problems wurde über den Weg der Analysis in der Algebra gefunden. Rund 200
-Jahre später noch einmal ein noch genialerer mathematischer „Coup“: Der Beweis
-des Großen FERMATschen Satzes durch WILES 1995 [5]. Auch hierbei wurden mit
-noch weitaus größerem Aufwand Erkenntnisse verschiedener mathematischer
-Gebiete verbunden, um zum gewünschten Beweis zu kommen.
+Mathematik durch \textsc{Gauss}: Das Problem war geometrischer Natur, die
+Lösung des Problems wurde über den Weg der Analysis in der Algebra
+gefunden. Rund 200 Jahre später noch einmal ein noch genialerer mathematischer
+„Coup“: Der Beweis des Großen \textsc{Fermat}schen Satzes durch \textsc{Wiles}
+1995\footnote{\url{http://de.wikipedia.org/wiki/Großer_Fermatscher_Satz}
+  (abgerufen am 16.05.2012)}. Auch hierbei wurden mit noch weitaus größerem
+Aufwand Erkenntnisse verschiedener mathematischer Gebiete verbunden, um zum
+gewünschten Beweis zu kommen.
 
 Die zentrale Rolle des Bestimmungswinkels bzw. seines Kosinus zur Konstruktion
 des zugehörigen regulären Polygons ist in der folgenden Abbildung am Beispiel
@@ -209,8 +219,8 @@ Polygon zu konstruieren, reicht es, wie oben beschrieben, wenn man den
 Bestimmungswinkel des regulären $n$-Ecks kennt. Dieser ergibt sich, wenn man
 neben einem frei wählbaren Eckpunkt, sozusagen einem trivialen Eckpunkt, einen
 weiteren benachbarten Eckpunkt kennt. Somit sind dann alle Eckpunkte
-konstruierbar. Das bedeutet, es sind, wenn die Eckenanzahl $n$ eine FERMATsche
-Primzahl ist, 
+konstruierbar. Das bedeutet, es sind, wenn die Eckenanzahl $n$ eine
+\textsc{Fermat}sche Primzahl ist,
 \begin{gather*}
   5 - 1 = 4 = 2^2, 17 - 1 = 16 = 2^4, 257 - 1 = 256 = 2^8 oder 65537 - 1 =
   65536 = 2^{16}
@@ -230,37 +240,46 @@ $2^{\br{2^k}}$ Blätter des Baumes der Höhe $2^k$ ($k = 1,2,\ldots,5$).
 
 \paragraph{Reguläres 17-Eck:}
 Die praktische Umsetzung der Konstruktion des regulären 17-Ecks und des
-regulären 257-Ecks wurde von GAUSS nicht erbracht, sondern für das reguläre
-17-Eck erstmalig 1825 von ERCHINGER [6]. Für eine illustrierte
-Konstruktionsbeschreibung des regulären 17-Ecks als pdf-Datei siehe
-\texttt{17Eck.pdf}.
+regulären 257-Ecks wurde von \textsc{Gauss} nicht erbracht, sondern für das
+reguläre 17-Eck erstmalig 1825 von
+ERCHINGER\footnote{\url{http://de.wikipedia.org/wiki/Siebzehneck} (abgerufen
+  am 01.09.2011).}. Für eine illustrierte Konstruktionsbeschreibung des
+regulären 17-Ecks als pdf-Datei siehe \texttt{17Eck.pdf}.
 
 \paragraph{Reguläres 257-Eck:}
-Die erste Konstruktion des regulären 257-Ecks beschrieb 1819, gedruckt 1822,
-PAUCKER (1787-1855) [7, 8], später 1832 [9] RICHELOT (1808-1875). Für die
-Konstruktion des regulären 257-Ecks folgten später weitere Arbeiten (deTEMPLE
-1991 [10], GOTTLIEB 1999 [11]), die u.a. das Ziel hatten, die Anzahl der zur
-Konstruktion nötigen Kreise und Geraden zu reduzieren. PAUCKER zitiert aus
-einem Brief von GAUSS an ihn (3) von 1820, worin GAUSS auf eigene Überlegungen
-und Rechnungen zum regulären 257-Eck im Jahre 1796 hinweist. PAUCKER
-vergleicht seine Ausdrücke mit denen von GAUSS und bemerkt strukturelle
-Übereinstimmung in den Gleichungen, nur die Bezeichnungen waren
-unterschiedlich. Das sollte bedeuten, dass bereits GAUSS einen gleichen oder
-vergleichbaten Ansatz zur Herleitung verwendet hatte. GAUSS verweist explizit
-auf die Verwendung der Primitivwurzel 3 ([8], S. 217-219). PAUCKER benutzt als
-erster auch die Schreibweise mit den indizierten Buchstaben $A, B, ..., G$,
-wie sie auch hier in der Herleitung verwendet wird.
+Die erste Konstruktion des regulären
+257-Ecks\footnote{\url{http://de.wikipedia.org/wiki/257-Eck} (abgerufen am
+  03.06.2016).} beschrieb 1819, gedruckt 1822, \textsc{Paucker} (1787-1855)
+\cite{Paucker1822}, später 1832 \textsc{Richelot} (1808-1875)
+\cite{Richelot1832}. Für die Konstruktion des regulären 257-Ecks folgten
+später weitere Arbeiten (\textsc{deTemple} 1991 \cite{deTemple1991},
+\textsc{Gottlieb} 1999 \cite{Gottlieb1999}), die u.a. das Ziel hatten, die
+Anzahl der zur Konstruktion nötigen Kreise und Geraden zu reduzieren.
+\textsc{Paucker} zitiert aus einem Brief von \textsc{Gauss} an ihn von 1820,
+worin \textsc{Gauss} auf eigene Überlegungen und Rechnungen zum regulären
+257-Eck im Jahre 1796 hinweist. \textsc{Paucker} vergleicht seine Ausdrücke
+mit denen von \textsc{Gauss} und bemerkt strukturelle Übereinstimmung in den
+Gleichungen, nur die Bezeichnungen waren unterschiedlich. Das sollte bedeuten,
+dass bereits \textsc{Gauss} einen gleichen oder vergleichbaten Ansatz zur
+Herleitung verwendet hatte. \textsc{Gauss} verweist explizit auf die
+Verwendung der Primitivwurzel 3 ([8], S. 217-219). \textsc{Paucker} benutzt
+als erster auch die Schreibweise mit den indizierten Buchstaben $A, B, ...,
+G$, wie sie auch hier in der Herleitung verwendet wird.
 
 Zur analytischen Herleitung siehe unten.
 
 Eine Vorstellung von der Konstruktion des regulären 257-Ecks (4) im
-Internetzeitalter liefert dieses Video (mp4-Format - etwa 40 MByte, avi-Format
-- etwa 400 MByte Quelle zu ergänzen). Mit Hilfe des modernen interaktiven
+Internetzeitalter liefert ein Video (mp4-Format -- etwa 40 MByte, avi-Format
+-- etwa 400 MByte; Quelle zu ergänzen). Mit Hilfe des modernen interaktiven
 Geometrieprogramms \emph{Geogebra} wurde die Konstruktion vom Autor auf der
-Grundlage von [12] und damit von [10] durchgeführt. Zur Lösung der vielfach zu
-lösenden quadratischen Gleichungen wurde ein auch für die Schulmathematik
-interessanter Ansatz verwendet: Die Kreise von CARLYLE (1795-1881) [13]. Das
-Prinzip ist aus der Abbildung zu erkennen.
+Grundlage einer
+Internetquelle\footnote{\url{http://it.wikipedia.org/wiki/257-gono} (abgerufen
+  am 01.09.2011).} und damit \cite{deTemple1991} durchgeführt. Zur Lösung der
+vielfach zu lösenden quadratischen Gleichungen wurde ein auch für die
+Schulmathematik interessanter Ansatz verwendet: Die Kreise von
+\textsc{Carlyle}\footnote{\url{http://it.wikipedia.org/wiki/Cerchio_di_Carlyle}
+  (abgerufen am 01.09.2011).} (1795-1881). Das Prinzip ist aus der Abbildung
+zu erkennen.
 
 \begin{center}
   \includegraphics[width=.7\textwidth]{CarlyleKreis.jpg}
@@ -274,14 +293,14 @@ lässt sich sehr bequem in \emph{Geogebra} nutzen. Bei ausschließlicher
 Verwendung von Kreisen und Geraden ist die Anzahl der Konstruktionsschritte
 deutlich größer. \emph{Geogebra} arbeitet intern mit gerundeten Dezimalzahlen,
 also nicht mit symbolischen Ausdrücken. Die Anzahl der Dezimalstellen kann man
-wählen. Im Video sieht man bei einen Blick in das Algebrafenster, mit welch
-hoher numerischen Stabilität (vom Autor 12 Nachkommastellen gewählt) das
-Programm für jede der 257 gleich langen Seiten gleiche Werte (0.02444758303)
-ausrechnet.
+wählen. Im Video (Quelle zu ergänzen) sieht man bei einen Blick in das
+Algebrafenster, mit welch hoher numerischen Stabilität (vom Autor 12
+Nachkommastellen gewählt) das Programm für jede der 257 gleich langen Seiten
+gleiche Werte (0.02444758303) ausrechnet.
 
 Zwei kleine Hinweise dazu:
 \begin{itemize}[noitemsep]
-\item Unter Verwendung der minimalen Schrittzeit von 1s bei der Darstellung
+\item Unter Verwendung der minimalen Schrittzeit von 1 s bei der Darstellung
   einer Konstruktion in Geogebra dauert die Konstruktion auch etwa 1170 s,
   also etwa 20 min. Der mögliche Schnelldurchlauf des Videos gestattet eine
   deutliche Verringerung dieser Zeit.
@@ -294,12 +313,13 @@ Zwei kleine Hinweise dazu:
 
 Die moderne Begründung der Konstruierbarkeit des regulären 257-Ecks mit Zirkel
 und Lineal erfolgt durch Folgerungen aus der GALOIS-Theorie. Der geneigte
-Leser sei auf einschlägige Arbeiten verwiesen, u. a. in Kurzform [14],
-ausführlicher BISHOP [15] mit Anmerkungen zur Konstruktion des regulären
-257-Ecks.
+Leser sei auf einschlägige Arbeiten verwiesen, u. a. in
+Kurzform\footnote{\url{http://de.wikipedia.org/wiki/Konstruierbare_Polygone}
+  (abgerufen am 20.05.2016)}, ausführlicher \cite{Bishop1978} mit Anmerkungen
+zur Konstruktion des regulären 257-Ecks.
 
 Die Konstruktion soll mit einfacheren Mittel begründet und nachvollziehbar
-hergeleitet werden. Wesentliche Stütze ist die Arbeit von deTEMPLE [10].
+hergeleitet werden. Wesentliche Stütze ist die Arbeit \cite{deTemple1991}.
 
 Der Mittelpunkt des 257-Ecks liegt im Ursprung eines komplexen
 Koordinatensystems, d.h. die reellen Zahlen finden sich auf der Abszissenachse
@@ -316,20 +336,19 @@ des Koordinatensystems zwischen Abszissenachse und Strahl durch den Punkt
 $P_1$, beträgt in Bogenmaß $\alpha= \frac{2\pi}{257}$. Also ist $z =
 \cos(\alpha) + \ii\sin(\alpha)$.
 
-So ist nach der EULERschen Identität $z =
-\mathrm{e}^{\frac{2\pi\ii}{257}}$.  Es ist überhaupt nicht schwierig,
-wenn man es mit komplexen Zahlen zu tun hat. Man kann über den Realteil von
-$z$, also $\cos(\alpha)$, der auf der Abszissenachse zu finden ist, den
-Schnittpunkt mit dem Einheitskreis finden. Dieser Punkt ist dann einer der
-Eckpunkte des regulären 257-Ecks.
+So ist nach der \textsc{Euler}schen Identität $z =
+\mathrm{e}^{\frac{2\pi\ii}{257}}$.  Es ist überhaupt nicht schwierig, wenn man
+es mit komplexen Zahlen zu tun hat. Man kann über den Realteil von $z$, also
+$\cos(\alpha)$, der auf der Abszissenachse zu finden ist, den Schnittpunkt mit
+dem Einheitskreis finden. Dieser Punkt ist dann einer der Eckpunkte des
+regulären 257-Ecks.
 
 Im Bereich der komplexen Zahlen hat die Gleichung $z^{257} = 1$ nach dem
-GAUSSschen Fundamentalsatz der Algebra 257 Lösungen. Wie man sofort sieht, ist
-$z = 1$ eine (triviale) reelle Lösung. Die anderen 256 Lösungen ergeben sich
-als Nullstellen des Polynoms
+\textsc{Gauss}schen Fundamentalsatz der Algebra 257 Lösungen. Wie man sofort
+sieht, ist $z = 1$ eine (triviale) reelle Lösung. Die anderen 256 Lösungen
+ergeben sich als Nullstellen des Polynoms
 \begin{gather*}
-   \frac{\br{z - 1}^{257}}{z - 1} = z^{256} + z^{255} + \ldots + z^3 + z^2 + z
-   + 1.
+   \frac{\br{z-1}^{257}}{z-1}=z^{256}+z^{255}+\ldots+z^3+z^2+z+1.
 \end{gather*}
 Bei Division einer ganzen Zahl durch 257 können sich 257 verschiedene Reste
 $(0, 1, \ldots, 256)$ ergeben. Man fasst alle ganzen Zahlen, die bei Division
@@ -353,8 +372,8 @@ werden, wobei der Exponent modulo 257 ist. Geometrisch ausgedrückt heißt das,
 wenn man neben dem trivialen Punkt $(0,1)$ einen weiteren Punkt des 257-Ecks
 kennt, kann man aus dessen Lage alle restlichen 255 Punkte finden. Das wird
 bei der Konstruktion des 257-Ecks ausgenutzt. Eine solche Zahl $g$ heißt
-\emph{Primitivwurzel modulo 257}. Für alle (bekannten) FERMATschen Primzahlen
-außer 3 ist 3 eine Primitivwurzel. Also ist
+\emph{Primitivwurzel modulo 257}. Für alle (bekannten) \textsc{Fermat}schen
+Primzahlen außer 3 ist 3 eine Primitivwurzel. Also ist
 \begin{align*}
   z^1 = a,& z^2 = a^{3 \pmod{257}}= a^3, z^3 = a^{9 \pmod{257}} =a^9, z^4 =
   a^{27 \pmod{257}} = a^{27}, \ldots,\\& z^{257} = a^{3^{256} \pmod{257}} =
@@ -378,65 +397,83 @@ soll in Halbstunden eingeteilt werden. Es kommen also zusätzlich zu den
 bestehenden 12 Restklassen noch 12 neue Restklassen hinzu. Die Anzahl der
 Restklassen verdoppelt sich. Die ehemaligen 12 Restklassen gibt es auch bei
 der neuen Einteilung noch.
-\end{document}
 
-Wie findet man eine nichttriviale Lösung der Gleichung z^{256} - 1 = 0?
-Ein möglicher Ansatz ist die Zerlegung der Menge der 256 Lösungen in zwei
-gleichmächtige Mengen M_0 und M_1. Es sollen daraus zwei reelle Zahlen A_0 und
-A_1 konstruiert werden. Aus ihnen kann mithilfe des VIETAschen Wurzelsatzes
-(VIETA 1540-1603) eine quadratische Gleichung bestimmt werden.
+Wie findet man eine nichttriviale Lösung der Gleichung $z^{256} - 1 = 0$?  Ein
+möglicher Ansatz ist die Zerlegung der Menge der 256 Lösungen in zwei
+gleichmächtige Mengen $M_0$ und $M_1$. Es sollen daraus zwei reelle Zahlen
+$A_0$ und $A_1$ konstruiert werden. Aus ihnen kann mithilfe des
+\textsc{Vieta}schen Wurzelsatzes (\textsc{Vieta} 1540-1603) eine quadratische
+Gleichung bestimmt werden.
 
-Kriterium der Auswahl ist der Index der z_i (i = 1, 2, ..., 257). Man
-verwendet die Restklassen der Indices modulo 2, also 0 oder 1. (Die Restklasse
-kommt in den Indices der Mengen M_0 und M_1 zum Ausdruck). So nehmen wir alle
-128 Lösungen z_i = z^{\:i \:mod \: 257} mit geraden Indices in die Menge M_0,
-die restlichen 128 Lösungen in die andere Menge M_1. Es sei A_0= z^3 + z^{27}
-+ ... + z^{238} + z^{86} und A_1 = z^1 + z^9 + ... + z^{165} + z^{200}.
+Kriterium der Auswahl ist der Index der $z_i$ ($i = 1, 2, ..., 257$). Man
+verwendet die Restklassen der Indizes modulo 2, also 0 oder 1. (Die Restklasse
+kommt in den Indizes der Mengen $M_0$ und $M_1$ zum Ausdruck). So nehmen wir
+alle 128 Lösungen $z_i = z^{i \pmod{257}}$ mit geraden Indizes in die Menge
+$M_0$, die restlichen 128 Lösungen in die andere Menge $M_1$. Es sei 
+\begin{gather*}
+  A_0= z^3 + z^{27} + ... + z^{238} + z^{86}\quad \text{und}\quad A_1 = z^1 +
+  z^9 + ... + z^{165} + z^{200}.
+\end{gather*}
 
+Wie man sofort sieht, ist $A_0 + A_1 = -1$. Das Produkt $A_0 \cdot A_1$ ergibt
+nach Ausmultiplizieren eine Summe von $128 \cdot 128 = 16384$ Summanden.
 
-Wie man sofort sieht, ist A_0 + A_1 = -1. Das Produkt A_0 \cdot A_1 ergibt
-nach Ausmultiplizieren eine Summe von 128 \cdot 128 = 16384 Summanden.
-
-
-A_0 \cdot A_1 ist somit z^{1 + 3} + z^{1 + 27} + ... + z^{1 + 238} + z^{1 +
-  86} + z^{9 + 3} + z^{9 + 27} + ... + z^{9 + 238} + z^{9 + 86} + ... + z^{165
-  + 3} + z^{165 + 27} + ... + z^{165 + 238} + z^{165 + 65} + z^{200 + 3} +
-z^{200 + 27} + ... + z^{200 + 238} + z^{200 + 86}. Wenn man die Kongruenz
-modulo 257 bei den Exponenten berücksichtigt, so sieht diese Summe so aus:
-z^{4} + z^{11} + ... + z^{181} + z^{29}. Zur Illustration ist in der Tabelle 1
-ist diese Multiplikation vollständig dargestellt. (In der Kopfspalte sind die
-Elemente der Menge M_0, in der Kopfzeile die Elemente der Menge M_1).
+Somit gilt  
+\begin{align*}
+  A_0 \cdot A_1 =\ & z^{1 + 3} + z^{1 + 27} + ... + z^{1 + 238} + z^{1 + 86} +
+  z^{9 + 3} + z^{9 + 27} + ... + z^{9 + 238} + z^{9 + 86}\\& + ... + z^{165 + 3}
+  + z^{165 + 27} + ... + z^{165 + 238} + z^{165 + 65} + z^{200 + 3} + z^{200 +
+    27}\\& + ... + z^{200 + 238} + z^{200 + 86}.
+\end{align*}
+Wenn man die Kongruenz modulo 257 bei den Exponenten berücksichtigt, so sieht
+diese Summe so aus: $z^{4} + z^{11} + ... + z^{181} + z^{29}$. Zur
+Illustration ist in der Tabelle 1 (ergänzen?) diese Multiplikation vollständig
+dargestellt. (In der Kopfspalte sind die Elemente der Menge $M_0$, in der
+Kopfzeile die Elemente der Menge $M_1$).
 
 Mit einfachen Taschenrechnern kann man, wenn überhaupt, ohne
-Genauigkeitsverlust keine natürlichen Zahlen wie 3^{256} mit 123 Ziffern
-verarbeiten. Dafür gibt es Langarithmetikprogramme, z. B. in der
-Mathematik-Software "Mathematik" Alpha 2016 [16] (und vielen ihrer
-Vorgängerversionen). (Diese Software ist gemäß den Nutzungsbedingungen für
-viele frei nutzbar:Downloadmöglichkeit.)
+Genauigkeitsverlust keine natürlichen Zahlen wie $3^{256}$ mit 123 Ziffern
+verarbeiten. Dafür gibt es Langzahlarithmetikprogramme, z. B. in der
+Mathematik-Software \emph{Mathematik} \cite{Polster2016} (und vielen ihrer
+Vorgängerversionen). 
 
+In Tabelle 2 (ergänzen?) ist aufgeführt, wie oft die jeweiligen Restklassen
+modulo 257 in Tabelle 1 enthalten sind. Die Kopfspalte gibt den „Zehner“ und
+die Kopfzeile den „Einer“ an, somit sind alle 257 Restklassen in der Tabelle
+2. Man erkennt, dass jede Potenz jeweils 64-mal vorkommt. So ergibt sich
+$A_{0} \cdot A_{1} = -64$.
 
-In Tabelle 2 ist aufgeführt, wie oft die jeweiligen Restklassen modulo 257 in
-Tabelle 1 enthalten sind. Die Kopfspalte gibt den "Zehner" und die Kopfzeile
-den "Einer" an, somit sind alle 257 Restklassen in der Tabelle 2. Man erkennt,
-dass jede Potenz jeweils 64-mal vorkommt. So ergibt sich A_{0} \cdot A_{1} =
--64.
+Die Gleichungen $A_0 + A_1 = -1$ und $A_0 \cdot A_1 = -64$ führen nach dem
+\textsc{Vieta}schen Wurzelsatz zu der quadratischen Gleichung $s^2 + s - 64 =
+0$ mit 
+\begin{gather*}
+  A_0=\frac{-1+\sqrt{257}}{2}\quad\text{und}\quad A_1=\frac{-1-\sqrt{257}}{2}.
+\end{gather*}
+$A_0$ und $A_1$ sind beides reelle Zahlen. Man findet sie auf der
+Abzissenachse des komplexen Koordinatensystems (siehe Schritt 36 der
+Konstruktion des regulären 257-Ecks).
 
-Die Gleichungen A_0 + A_1 = -1 und A_0 \cdot A_1 = -64 führen nach dem
-VIETAschen Wurzelsatz zu der quadratischen Gleichung s^2 + s - 64 = 0 mit
-A_0=\frac{-1+\sqrt{257}}{2} und A_1=\frac{-1-\sqrt{257}}{2}. A_0 und A_1 sind
-beides reelle Zahlen. Man findet sie auf der Abzissenachse des komplexen
-Koordinatensystems (siehe Schritt 36 der Konstruktion des regulären 257-Ecks).
+Als nächstes zerlegt man die Menge der Lösungen mit geraden Indices $M_{0}$
+weiter in zwei gleichmächtige Mengen $M_{0,0}$ und $M_{0,2}$. In der Menge
+$M_{0,0}$ sind jetzt alle Lösungen mit durch 4 teilbaren Indizes und in der
+Menge $M_{0,2}$ alle Lösungen mit geradem, aber nicht durch 4 teilbaren
+Indizes.  Man wählt den Ansatz 
+\begin{align*}
+  B_0 &= z^1 + z^{81} + z^{136} + ... + z^{240} + z^{165}\quad\text{und}\\ B_2
+  &= z^9 + z^{215} + z^{196} + ... + z^{104} + z^{200}.
+\end{align*}
+Es ist $B_0 + B_2 = A_0$ und $B_0 \cdot B_2 = -164$. In den Tabellen 3 und 4
+ist diese Multiplikation vollständig dargestellt.
 
-Als nächstes zerlegt man die Menge der Lösungen mit geraden Indices M_{0} weiter in zwei gleichmächtige Mengen M_{0; 0} und M_{0; 2}. In der Menge M_{0; 0} sind jetzt alle Lösungen mit durch 4 teilbaren Indices und in der Menge M_{0; 2} alle Lösungen mit geradem, aber nicht durch 4 teilbaren Indices. Man wählt den Ansatz
-B_0 = z^1 + z^{81} + z^{136} + ... + z^{240} + z^{165} und B_2 = z^9 + z^{215}
-+ z^{196} + ... + z^{104} + z^{200}. Es ist B_0 + B_2 = A_0 und B_0 \cdot B_2
-= -16. In den Tabellen 3 und 4 ist diese Multiplikation vollständig
-dargestellt.
+Daraus erhält man die quadratische Gleichung $s^{2}- A_{0} \cdot s - 16 = 0$
+mit den Lösungen
+\begin{gather*}
+  B_0 = \frac{A_0}{2}+ \sqrt{\br{\frac{A_0}{2}}^2+16}\quad\text{und}\quad B_2
+  = \frac{A_0}{2}- \sqrt{\br{\frac{A_0}{2}}^2+16}.
+\end{gather*}
 
-
-Daraus erhält man die quadratische Gleichung s^{2}- A_{0} \cdot s - 16 = 0,
-deren Lösungen B_0 = \frac{A_0}{2}+ \sqrt{\left({\frac{A_0}{2}}\right)^2+16}
-und B_2 = \frac{A_0}{2}- \sqrt{\left({\frac{A_0}{2}}\right)^2+16} sind.
+\input{references.tex}
+\end{document}
 
 Die restlichen Lösungen aus der Menge M_0 sind diejenigen mit ungeraden
 Indices. Sie werden in zwei gleichmächtige Mengen M_{0; 1} und M_{0; 3}
@@ -478,7 +515,7 @@ dargestellt. (In der Kopfzeile bzw. -spalte sind die Elemente der Menge M_{0}
 für den Fall der Restklassen 0 und 4 mod 8 angegeben.)
 
 
-Nach (**) gilt C_0 + C_4 = B_0. Um mit dem Wurzelsatz von VIETA eine
+Nach (**) gilt C_0 + C_4 = B_0. Um mit dem Wurzelsatz von \textsc{Vieta} eine
 quadratische Gleichung erhalten zu können, benötigt man noch einen
 äquivalenten Term für C_0 \cdot C_4. Dieser soll als Linearkombination aus den
 bekannten B_j\: (j = 0; 1; 2; 3) und A_i\: (i = 0; 1) gebildet werden. So ist
@@ -509,7 +546,7 @@ C_3 \cdot C_7 = 3 \cdot A_0 + 2 \cdot B_1 - 2
 auch
 
 C_1 + C_5 = B_1, C_2 + C_6 = B_2 und C_3 + C_7 = B_3.
-Eine der nach dem Satz von VIETA zu bildenden 4 quadratischen Gleichungen
+Eine der nach dem Satz von \textsc{Vieta} zu bildenden 4 quadratischen Gleichungen
 lautet dann z.B. s^2 - B_0 \cdot s + 3 \cdot A_1 + 2 \cdot B_2 - 2 = 0.
 
 
@@ -675,7 +712,7 @@ Verteilebene nur mit den Lösungen der quadratischen Gleichungen voriger
 Verteilebenen aufstellen kann. In den Linearkombinationen sind Lösungen
 quadratischer Gleichungen von bis zu 7 vorhergehender Verteilebenen
 enthalten. Für die Aufstellung der quadratischen Gleichungen kommt der Satz
-von VIETA zur Anwendung.
+von \textsc{Vieta} zur Anwendung.
 
 Verteilebene 	mod n 	Anzahl der quadratischen Gleichungen 	davon
 verwendet für weitere Rechnungen 	Beispiel
@@ -898,7 +935,7 @@ Summe
 Zur Wahrung der Vollständigkeit sei hier angeführt, dass das Prinzip der
 Aufteilung der Restklassen in geeignete Mengen, wie nicht anders zu erwarten,
 für die Konstruktion aller regulären Polygone mit einer Eckenzahl gleich einer
-der FERMATschen Primzahlen angewandt werden kann, also auch bei der
+der \textsc{Fermat}schen Primzahlen angewandt werden kann, also auch bei der
 Konstruktion des regulären 5-Ecks und 3-Ecks. Jedoch führen bekanntermaßen
 einfachere Überlegungen schneller zum Ziel.
 
@@ -910,34 +947,12 @@ veröffentlichen zu dürfen!
 \end{document}
 
 Koffer 65537-Eck 	Koffer 65537-Ecks offen 	Diarium ... 	Konstruktion des 65537-Ecks
-Einleitung 	Hinweis Fermatsche Zahl 	Übersicht verschiedene Tabellen 	Ausführungen zum 5-Eck
+Einleitung 	Hinweis \textsc{Fermat}sche Zahl 	Übersicht verschiedene Tabellen 	Ausführungen zum 5-Eck
 Ausführungen zum 17-Eck 	Ausführungen zum 257-Eck 	Hinweise zur Klebetechnik 	Einweis zum 65537-Eck
 Berechnung der Quadratwurzel aus 65537 	Gleichungen zum 65537-Eck 	Hinweis auf Kodierung der Indices 	Indices-Tabellen
 Tabellen und Symbolen 	Tabellen mit Symbolen 	Tabellen mit Symbolen, vergrößert 	Tabellen mit Zahlen
 Anliegen und Resumeé der Arbeit 	letzte ausgeführte Seite 	Der Autor mit dem Koffer
 
-Literatur und andere Quellen:
-[1] Mathematisches Tagebuch 1796-1814 von Carl Friedrich Gauss. Mit einer historischen Einführung von Kurt-R. Biermann (Ostwalds Klassiker der exakten Wissenschaften, Band 256, Begründet von Wilhelm Ostwald). Hrsg. D. Goetz, E. Wächtler, H. Wußing, Akademische Verlagsgesellschaft Geest & Portig, K.-G., Leipzig 1976, S. 15f.
-[2] Patzschke, Jürgen: Carl Friedrich Gauss und das Siebzehneck - Teil I, Zeitschrift "Wurzel", Hrsg. Wurzel-Verein zur Förderung der Mathematik an Schulen und Universitäten, Jena 2002, Heft 5, S.15-24
-[3] http://de.wikipedia.org/wiki/Wantzel (abgerufen am 01.09.2011)
-[4] http://de.wikipedia.org/wiki/Fermat-Zahl (abgerufen am 16.05.2012)
-[5] http://de.wikipedia.org/wiki/Gro%C3%9Fer_Fermatscher_Satz (abgerufen am 16.05.2012)
-[6] http://de.wikipedia.org/wiki/Siebzehneck (abgerufen am 01.09.2011)
-[7] http://de.wikipedia.org/wiki/257-Eck (abgerufen am 03.06.2016)
-[8] Paucker, Georg: Geometrische Verzeichnung des regelmässigen Siebzehn-Ecks und Zweyhundertsiebenundfunfzig-Ecks in den Kreis, In: Jahresverhandlungen der kurländischen Gesellschaft für Literatur und Kunst, Zweyter Band, Mitau 1822, S. 160-219;
-[9] Richelot, Friedrich Julius: De resolutione algebraica aequationis x257 = 1, sive de divisione circuli per bisectionem anguli septies repetitam in partes 257 inter se aequales commentatio coronata. In: Journal für die reine und angewandte Mathematik. Nr. 9, 1832, S. 1-26, 146-161, 209-230, und 337-358.
-[10] DeTemple, Duane W.: Carlyle Circles and the Lemoine Simplicity of Polygonal Constructions. In: The American Mathematical Monthly. No. 98, 1991, S. 97-108.
-[11] Gottlieb, Christian: The Simple and Straightforward Construction of the Regular 257-gon. In: Mathematical Intelligencer. Vol. 21, No. 1, 1999, S. 31-37.
-[12] http://it.wikipedia.org/wiki/257-gono (abgerufen am 01.09.2011)
-[13] http://it.wikipedia.org/wiki/Cerchio_di_Carlyle (abgerufen am 01.09.2011)
-[14] http://de.wikipedia.org/wiki/Konstruierbare%20Polygone (abgerufen am 20.05.2016)
-[15] Bishop, Wayne: How to construct a regular polygon, Amer. Math Monthly, 85 (1978) 186-188
-[16] Polster, Steffen: "Mathematik" Alpha 2016, http://mathematikalpha.de
-[17] Hermes, Johann Gustav: Diarium zur Kreisteilung, Königsberg 1879, (1879 begonnen - d. A.)
-[18] Hermes, Johann Gustav: Ueber die Teilung des Kreises in 65537 gleiche Teile. In: Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen, Mathematisch-Physikalische Klasse. Göttingen, 1894, S. 170–186.
-[19] http://facstaff.susqu.edu/brakke/constructions/65537-gon.m.txt (abgerufen am 06.06.2017) 1Historie: erstellt 2012, bearbeitet und ergänzt am 24.06.2016, 30.06.2017 und 12.06.2019
-2Nichtnegative ganze Zahlen sind: 0; 1; 2; 3; ...
-3GAUSS gibt in diesem Brief den 30. März als Tag seiner Entdeckung der Kreisteilung an ([8], S. 219). Ein Tag später als in der oben zitierten Aussage von GAUSS.
 4anlässlich des Festvortrages im Rahmen der Feierlichen Siegerehrung der Landesrunde Sachsen der 50. Mathematik-Olympiade der Klassen 9 bis 12 am 27.02.2011 in Leipzig
 5Möglicherweise kann der eine oder andere Betrachter der Bilder keine Deutsche Kurrentschrift lesen, daher sind vom Autor einige Bemerkungen in die Bilder eingefügt worden.
 6Zur Vermeidung von Verwechslungen mit Ziffern wurde auf die Buchstaben I, O und Q verzichtet.
