@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 
 \newcommand{\br}[1]{\ensuremath{\left(#1\right)}}
+\newcommand{\cbr}[1]{\ensuremath{\left\{#1\right\}}}
 \newcommand{\ii}{\mathrm{i}}
 \newcommand{\N}{\mathbbm{N}}
 \newcommand{\Z}{\mathbbm{Z}}
@@ -12,10 +13,10 @@
 \parindent0pt
 \parskip3pt
 
-\author{Bernd Winter}
+\author{Bernd Winter, Korrekturen durch Hans-Gert Gräbe}
 \title{Zur Konstruktion regulärer Polygone, insbesondere des regulären
   17-Ecks, 257-Ecks und 65537-Ecks} 
-\date{Erstellt 2012, letztes Update 12.06.2019}
+\date{Erstellt 2012, letztes Update 06.12.2020}
 
 \begin{document} 
 \maketitle         
@@ -220,13 +221,12 @@ Bestimmungswinkel des regulären $n$-Ecks kennt. Dieser ergibt sich, wenn man
 neben einem frei wählbaren Eckpunkt, sozusagen einem trivialen Eckpunkt, einen
 weiteren benachbarten Eckpunkt kennt. Somit sind dann alle Eckpunkte
 konstruierbar. Das bedeutet, es sind, wenn die Eckenanzahl $n$ eine
-\textsc{Fermat}sche Primzahl ist,
+\textsc{Fermat}sche Primzahl ist, also eine der Zahlen 
 \begin{gather*}
-  5 - 1 = 4 = 2^2, 17 - 1 = 16 = 2^4, 257 - 1 = 256 = 2^8 oder 65537 - 1 =
-  65536 = 2^{16}
+  5-1=4=2^2, 17-1=16=2^4, 257-1=256=2^8\ \text{oder}\ 65537-1=65536=2^{16},
 \end{gather*}
-„nichttriviale“ Eckpunkte zu konstruieren. Wie die nachstehende Abbildung
-zeigt, kann man sich das anhand vollständiger binärer Bäume gut
+entsprechende „nichttriviale“ Eckpunkte zu konstruieren. Wie die nachstehende
+Abbildung zeigt, kann man sich das anhand vollständiger binärer Bäume gut
 veranschaulichen. Wie weiter unten erklärt wird, muss man verschachtelte
 quadratische Gleichungen lösen, die in unseren betrachteten Fällen stets zwei
 reelle Lösungen besitzen. Jeder Knoten entspricht einer dieser quadratischen
@@ -242,9 +242,9 @@ $2^{\br{2^k}}$ Blätter des Baumes der Höhe $2^k$ ($k = 1,2,\ldots,5$).
 Die praktische Umsetzung der Konstruktion des regulären 17-Ecks und des
 regulären 257-Ecks wurde von \textsc{Gauss} nicht erbracht, sondern für das
 reguläre 17-Eck erstmalig 1825 von
-ERCHINGER\footnote{\url{http://de.wikipedia.org/wiki/Siebzehneck} (abgerufen
-  am 01.09.2011).}. Für eine illustrierte Konstruktionsbeschreibung des
-regulären 17-Ecks als pdf-Datei siehe \texttt{17Eck.pdf}.
+\textsc{Erchinger}\footnote{\url{http://de.wikipedia.org/wiki/Siebzehneck}
+  (abgerufen am 01.09.2011).}. Für eine illustrierte Konstruktionsbeschreibung
+des regulären 17-Ecks als pdf-Datei siehe \texttt{17Eck.pdf}.
 
 \paragraph{Reguläres 257-Eck:}
 Die erste Konstruktion des regulären
@@ -312,8 +312,8 @@ Zwei kleine Hinweise dazu:
 \subsection*{Analytische Herleitung der Konstruktion des regulären 257-Ecks}
 
 Die moderne Begründung der Konstruierbarkeit des regulären 257-Ecks mit Zirkel
-und Lineal erfolgt durch Folgerungen aus der GALOIS-Theorie. Der geneigte
-Leser sei auf einschlägige Arbeiten verwiesen, u. a. in
+und Lineal erfolgt durch Folgerungen aus der \textsc{Galois}-Theorie. Der
+geneigte Leser sei auf einschlägige Arbeiten verwiesen, u. a. in
 Kurzform\footnote{\url{http://de.wikipedia.org/wiki/Konstruierbare_Polygone}
   (abgerufen am 20.05.2016)}, ausführlicher \cite{Bishop1978} mit Anmerkungen
 zur Konstruktion des regulären 257-Ecks.
@@ -348,37 +348,31 @@ Im Bereich der komplexen Zahlen hat die Gleichung $z^{257} = 1$ nach dem
 sieht, ist $z = 1$ eine (triviale) reelle Lösung. Die anderen 256 Lösungen
 ergeben sich als Nullstellen des Polynoms
 \begin{gather*}
-   \frac{\br{z-1}^{257}}{z-1}=z^{256}+z^{255}+\ldots+z^3+z^2+z+1.
+   \frac{z^{257}-1}{z-1}=z^{256}+z^{255}+\ldots+z^3+z^2+z+1.\tag{2}
 \end{gather*}
-Bei Division einer ganzen Zahl durch 257 können sich 257 verschiedene Reste
-$(0, 1, \ldots, 256)$ ergeben. Man fasst alle ganzen Zahlen, die bei Division
-durch eine feste natürliche Zahl $p$, hier 257, denselben Rest lassen, zu
-einer Menge zusammen. Es gibt also in unserem Fall 257 paarweise verschiedene
-solcher Mengen. Man sagt dann, dass zwei Elemente einer Menge kongruent modulo
-der ganzen Zahl $p$ sind. Die Kongruenz modulo einer ganzen Zahl ist eine
-Äquivalenzrelation, daher kann man die Mengen gleichen Restes als Klassen
-bezeichnen, kurz Restklassen. Die Menge der Restklassen modulo 257 bildet
-bezüglich der Multiplikation eine besondere algebraische Struktur, eine
-endliche Gruppe, genannt Restklassengruppe $\Z_{257}$. Unter bestimmten
-Voraussetzungen kann man die Elemente einer Gruppe mit einem erzeugenden
-Element vollständig errechnen. Diese sind hier gegeben. Die Restklassengruppe
-$\Z_{257}$ kann zyklisch erzeugt werden. Es sei $a$ Element von $\Z_{257}$. Es
-gibt eine natürliche Zahl $g$, für die gilt
+Diese Nullstellen $z_i$, $i=0,\ldots,256$, lassen sich alle als $z_i=\zeta^i$
+für eine geeignete komplexe Zahl $\zeta$ darstellen; die Multiplikation zweier
+Nullstellen $z_i\cdot z_j=\zeta^{i+j}$ entspricht dabei der Addition der
+Exponenten, wobei wegen $\zeta^{257}=1$ der Exponent $i+j$ modulo 257
+reduziert, also in der additiven Gruppe des Restklassenrings $\Z_{257}$
+gerechnet werden kann.
+
+Die Nullstellen $z_i\neq 1$ entsprechen dabei den primitiven Restklassen
+$\Z_{257}^\ast$, die ihrerseits eine endliche multiplikative Gruppe bilden.
+Diese Gruppe kann zyklisch erzeugt werden, d.h. es gibt ein Element $g\in
+\Z_{257}^\ast$, so dass
 \begin{gather*}
-  a = a^{g^0}, a^{g^1}, a^{g^2}, a^{g^3}, \ldots, a^{g^{258}} = a^1 
+  \Z_{257}^\ast=\cbr{1,g,g^2,g^3,\ldots,g^{256}}\quad \text{und}\quad g^{257}=1
 \end{gather*}
-oder kurz: Jede Restklasse modulo 257 kann als Potenz von $a$ geschrieben
-werden, wobei der Exponent modulo 257 ist. Geometrisch ausgedrückt heißt das,
-wenn man neben dem trivialen Punkt $(0,1)$ einen weiteren Punkt des 257-Ecks
-kennt, kann man aus dessen Lage alle restlichen 255 Punkte finden. Das wird
-bei der Konstruktion des 257-Ecks ausgenutzt. Eine solche Zahl $g$ heißt
-\emph{Primitivwurzel modulo 257}. Für alle (bekannten) \textsc{Fermat}schen
-Primzahlen außer 3 ist 3 eine Primitivwurzel. Also ist
-\begin{align*}
-  z^1 = a,& z^2 = a^{3 \pmod{257}}= a^3, z^3 = a^{9 \pmod{257}} =a^9, z^4 =
-  a^{27 \pmod{257}} = a^{27}, \ldots,\\& z^{257} = a^{3^{256} \pmod{257}} =
-  a^{86}.
-\end{align*}
+gilt.  Damit lassen sich die Nullstellen des Polynoms (2) als 
+\begin{gather*}
+  \zeta = \zeta^{g^0}, \zeta^{g^1}, \zeta^{g^2}, \zeta^{g^3}, \ldots,
+  \zeta^{g^{256}}
+\end{gather*}
+darstellen, wobei $\zeta^{g^{257}} = \zeta^1$ gilt.  Eine solche Zahl $g$
+heißt \emph{Primitivwurzel modulo 257}. Für alle (bekannten)
+\textsc{Fermat}schen Primzahlen größer als 3 ist $g=3$ eine solche
+Primitivwurzel. 
 
 Bei endlichen Mengen versteht man unter der Mächtigkeit einer Menge $M$ die
 Anzahl der Elemente von $M$. Aus der Rechnung mit Restklassen lässt sich
@@ -398,50 +392,49 @@ bestehenden 12 Restklassen noch 12 neue Restklassen hinzu. Die Anzahl der
 Restklassen verdoppelt sich. Die ehemaligen 12 Restklassen gibt es auch bei
 der neuen Einteilung noch.
 
-Wie findet man eine nichttriviale Lösung der Gleichung $z^{256} - 1 = 0$?  Ein
-möglicher Ansatz ist die Zerlegung der Menge der 256 Lösungen in zwei
-gleichmächtige Mengen $M_0$ und $M_1$. Es sollen daraus zwei reelle Zahlen
-$A_0$ und $A_1$ konstruiert werden. Aus ihnen kann mithilfe des
-\textsc{Vieta}schen Wurzelsatzes (\textsc{Vieta} 1540-1603) eine quadratische
-Gleichung bestimmt werden.
+Wie findet man eine nichttriviale Lösung der Gleichung (2)?  Ein möglicher
+Ansatz ist die Zerlegung der Menge der 256 Lösungen in zwei gleichmächtige
+Mengen $M_0$ und $M_1$. Es sollen daraus zwei reelle Zahlen $A_0$ und $A_1$
+konstruiert werden. Aus ihnen kann mit Hilfe des \textsc{Vieta}schen
+Wurzelsatzes (\textsc{Vieta} 1540-1603) eine quadratische Gleichung bestimmt
+werden.
 
 Kriterium der Auswahl ist der Index der $z_i$ ($i = 1, 2, ..., 257$). Man
 verwendet die Restklassen der Indizes modulo 2, also 0 oder 1. (Die Restklasse
 kommt in den Indizes der Mengen $M_0$ und $M_1$ zum Ausdruck). So nehmen wir
 alle 128 Lösungen $z_i = z^{i \pmod{257}}$ mit geraden Indizes in die Menge
 $M_0$, die restlichen 128 Lösungen in die andere Menge $M_1$. Es sei 
-\begin{gather*}
-  A_0= z^3 + z^{27} + ... + z^{238} + z^{86}\quad \text{und}\quad A_1 = z^1 +
-  z^9 + ... + z^{165} + z^{200}.
+\begin{align*}
+  A_0&= \sum_{0<i<256, i\ \text{ungerade}}{z^{3^i \pmod{257}}}
+  =z^3+z^{27}+\ldots+z^{238}+z^{86} \quad \text{und}\\
+  A_1 &= \sum_{0\le i <256, i\ \text{gerade}}{z^{3^i \pmod{257}}} =
+  z^1+z^9+\ldots+z^{165}+z^{200}.
 \end{gather*}
+% Maxima:
+%% tellrat((z^(257)-1)/(z-1));
+%% algebraic:true;
+%% A0:sum(z^(power_mod(3,(2*i+1),257)),i,0,127);
+%% A1:sum(z^(power_mod(3,(2*i),257)),i,0,127);
+%% ratsimp(A0+A1);  /*  - 1 */
+%% ratsimp(A0*A1);  /* - 64 */
 
 Wie man sofort sieht, ist $A_0 + A_1 = -1$. Das Produkt $A_0 \cdot A_1$ ergibt
-nach Ausmultiplizieren eine Summe von $128 \cdot 128 = 16384$ Summanden.
-
-Somit gilt  
-\begin{align*}
-  A_0 \cdot A_1 =\ & z^{1 + 3} + z^{1 + 27} + ... + z^{1 + 238} + z^{1 + 86} +
-  z^{9 + 3} + z^{9 + 27} + ... + z^{9 + 238} + z^{9 + 86}\\& + ... + z^{165 + 3}
-  + z^{165 + 27} + ... + z^{165 + 238} + z^{165 + 65} + z^{200 + 3} + z^{200 +
-    27}\\& + ... + z^{200 + 238} + z^{200 + 86}.
-\end{align*}
-Wenn man die Kongruenz modulo 257 bei den Exponenten berücksichtigt, so sieht
-diese Summe so aus: $z^{4} + z^{11} + ... + z^{181} + z^{29}$. Zur
-Illustration ist in der Tabelle 1 (ergänzen?) diese Multiplikation vollständig
-dargestellt. (In der Kopfspalte sind die Elemente der Menge $M_0$, in der
-Kopfzeile die Elemente der Menge $M_1$).
-
-Mit einfachen Taschenrechnern kann man, wenn überhaupt, ohne
-Genauigkeitsverlust keine natürlichen Zahlen wie $3^{256}$ mit 123 Ziffern
-verarbeiten. Dafür gibt es Langzahlarithmetikprogramme, z. B. in der
-Mathematik-Software \emph{Mathematik} \cite{Polster2016} (und vielen ihrer
-Vorgängerversionen). 
-
-In Tabelle 2 (ergänzen?) ist aufgeführt, wie oft die jeweiligen Restklassen
-modulo 257 in Tabelle 1 enthalten sind. Die Kopfspalte gibt den „Zehner“ und
-die Kopfzeile den „Einer“ an, somit sind alle 257 Restklassen in der Tabelle
-2. Man erkennt, dass jede Potenz jeweils 64-mal vorkommt. So ergibt sich
-$A_{0} \cdot A_{1} = -64$.
+nach Ausmultiplizieren eine Summe von $128 \cdot 128 = 16384$ Summanden, die
+sich zu $-64$ vereinfachen lässt. Beides kann mit \textsc{Maxima}\footnote{Ein
+  freies CAS, das von Lehrern gern eingesetzt wird,
+  \url{http://maxima.sourceforge.net/}} schnell nachgeprüft werden:
+\begin{code}
+tellrat((z\pw(257)-1)/(z-1));\\
+algebraic:true;\\
+A0:sum(z\pw(power\_mod(3,(2*i+1),257)),i,0,127);\\
+A1:sum(z\pw(power\_mod(3,(2*i),257)),i,0,127);\\
+ratsimp(A0+A1);
+\end{code}
+\begin{gather*} -1 \end{gather*}
+\begin{code}
+ratsimp(A0*A1);
+\end{code}
+\begin{gather*} -64 \end{gather*}
 
 Die Gleichungen $A_0 + A_1 = -1$ und $A_0 \cdot A_1 = -64$ führen nach dem
 \textsc{Vieta}schen Wurzelsatz zu der quadratischen Gleichung $s^2 + s - 64 =
@@ -464,6 +457,13 @@ Indizes.  Man wählt den Ansatz
 \end{align*}
 Es ist $B_0 + B_2 = A_0$ und $B_0 \cdot B_2 = -164$. In den Tabellen 3 und 4
 ist diese Multiplikation vollständig dargestellt.
+
+% Maxima: Fortsetzung
+%% B0:sum(z^(power_mod(3,(4*i),257)),i,0,63);
+%% B2:sum(z^(power_mod(3,(4*i+2),257)),i,0,63);
+%% A1:sum(z^(power_mod(3,(2*i),257)),i,0,127);
+%% ratsimp(B0+B2+A0); /*  - 1 */
+%% ratsimp(B0*B2);  /* - 16 */
 
 Daraus erhält man die quadratische Gleichung $s^{2}- A_{0} \cdot s - 16 = 0$
 mit den Lösungen
