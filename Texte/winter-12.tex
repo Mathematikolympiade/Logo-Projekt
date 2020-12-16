@@ -9,6 +9,11 @@
 \newcommand{\Z}{\mathbbm{Z}}
 \newcommand{\ggT}{\mathrm{ggT}}
 \newcommand{\HGG}[1]{\begin{quote} Einfügen: #1 \end{quote}}
+\def\pw{{\char94}}
+
+\newenvironment{code}{\tt \begin{tabbing}
+\hskip12pt\=\hskip12pt\=\hskip12pt\=\hskip12pt\=\hskip5cm\=\hskip5cm\=\kill}
+{\end{tabbing}}
 
 \parindent0pt
 \parskip3pt
@@ -409,7 +414,7 @@ $M_0$, die restlichen 128 Lösungen in die andere Menge $M_1$. Es sei
   =z^3+z^{27}+\ldots+z^{238}+z^{86} \quad \text{und}\\
   A_1 &= \sum_{0\le i <256, i\ \text{gerade}}{z^{3^i \pmod{257}}} =
   z^1+z^9+\ldots+z^{165}+z^{200}.
-\end{gather*}
+\end{align*}
 % Maxima:
 %% tellrat((z^(257)-1)/(z-1));
 %% algebraic:true;
@@ -428,13 +433,9 @@ tellrat((z\pw(257)-1)/(z-1));\\
 algebraic:true;\\
 A0:sum(z\pw(power\_mod(3,(2*i+1),257)),i,0,127);\\
 A1:sum(z\pw(power\_mod(3,(2*i),257)),i,0,127);\\
-ratsimp(A0+A1);
+ratsimp(A0+A1); /*  -1 */\\
+ratsimp(A0*A1); /* -64 */
 \end{code}
-\begin{gather*} -1 \end{gather*}
-\begin{code}
-ratsimp(A0*A1);
-\end{code}
-\begin{gather*} -64 \end{gather*}
 
 Die Gleichungen $A_0 + A_1 = -1$ und $A_0 \cdot A_1 = -64$ führen nach dem
 \textsc{Vieta}schen Wurzelsatz zu der quadratischen Gleichung $s^2 + s - 64 =
@@ -458,10 +459,18 @@ Indizes.  Man wählt den Ansatz
 Es ist $B_0 + B_2 = A_0$ und $B_0 \cdot B_2 = -164$. In den Tabellen 3 und 4
 ist diese Multiplikation vollständig dargestellt.
 
+\textsc{Maxima} liefert allerdings ein anderes Ergebnis (Fortsetzung der
+Rechnung oben): 
+\begin{code}
+B0:sum(z\pw(power\_mod(3,(4*i),257)),i,0,63);\\
+B2:sum(z\pw(power\_mod(3,(4*i+2),257)),i,0,63);\\
+ratsimp(B0+B2+A0); /*  - 1 */\\
+ratsimp(B0*B2);  /* - 16 */
+\end{code}
+
 % Maxima: Fortsetzung
 %% B0:sum(z^(power_mod(3,(4*i),257)),i,0,63);
 %% B2:sum(z^(power_mod(3,(4*i+2),257)),i,0,63);
-%% A1:sum(z^(power_mod(3,(2*i),257)),i,0,127);
 %% ratsimp(B0+B2+A0); /*  - 1 */
 %% ratsimp(B0*B2);  /* - 16 */
 
@@ -471,6 +480,8 @@ mit den Lösungen
   B_0 = \frac{A_0}{2}+ \sqrt{\br{\frac{A_0}{2}}^2+16}\quad\text{und}\quad B_2
   = \frac{A_0}{2}- \sqrt{\br{\frac{A_0}{2}}^2+16}.
 \end{gather*}
+
+\newpage
 
 \input{references.tex}
 \end{document}
