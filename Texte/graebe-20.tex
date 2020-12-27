@@ -1,0 +1,312 @@
+\documentclass[11pt]{article}  
+\usepackage{a4wide,ngerman,url,amsmath,bbm,graphicx,enumitem}
+\usepackage[utf8]{inputenc}
+
+\newcommand{\br}[1]{\ensuremath{\left(#1\right)}}
+\newcommand{\cbr}[1]{\ensuremath{\left\{#1\right\}}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\N}{\mathbbm{N}}
+\newcommand{\Z}{\mathbbm{Z}}
+\newcommand{\Q}{\mathbbm{Q}}
+\newcommand{\C}{\mathbbm{C}}
+\def\pw{{\char94}}
+
+\newenvironment{code}{\tt \begin{tabbing}
+\hskip12pt\=\hskip12pt\=\hskip12pt\=\hskip12pt\=\hskip5cm\=\hskip5cm\=\kill}
+{\end{tabbing}}
+
+\parindent0pt
+\parskip3pt
+
+\author{Hans-Gert Gräbe}
+\title{Zur Konstruktion regulärer Polygone} 
+\date{Version vom 27.12.2020}
+
+\begin{document} 
+\maketitle         
+
+\section{Zahlentheoretische Vorbereitungen}
+
+Für eine natürliche Zahl $n>1$ bilden die primen Restklassen
+\begin{gather*}
+  \Z_n^\ast=\cbr{a \pmod n \mid 0<a<n,\ \gcd(a,n)=1}
+\end{gather*}
+bekanntlich eine multiplikative Gruppe, die für eine Primzahl $p$ darüber
+hinaus zyklisch ist, d.h. es gibt Elemente $g\in \Z_p^\ast$ mit
+\begin{gather*}
+  \Z_p^\ast=\cbr{1,g,g^2,\dots,g^{p-2}}.
+\end{gather*}
+Solche Elemente werden als \emph{primitive Wurzeln} modulo $p$ bezeichnet;
+ihre Anzahl ist gleich der Anzahl der primen Restklassen modulo $p-1$, denn
+man überzeugt sich leicht, dass mit $g$ auch jedes Element $g'\equiv g^a
+\pmod{p-1}$ mit $\gcd(a,p-1)=1$ ebenfalls die Gruppe $\Z_p^\ast$ erzeugt.
+
+Die Existenz solcher $g$ charakterisiert zugleich Primzahlen, da die Ordnung
+$\left|\Z_n^\ast\right|$ der Gruppe der primen Restklassen für
+zusammengesetzte Zahlen stets kleiner als $n-1$ ist.
+
+Dies ist auch die Basis für Primzahlzertifikate, da die einschlägigen
+Primtestalgorithmen zusammengesetzte Zahlen $n$ sicher erkennen und einen
+\emph{Zeugen} $W(n)$ zu produzieren vermögen, mit dem die Zusammengesetztheit
+schnell nachgewiesen werden kann, für Primzahlen $p$ aber nur die Antwort
+liefern „mit sehr hoher Wahrscheinlichkeit prim“. Hier liefert eine Restklasse
+$g \pmod p$ samt dem Beweis, dass $\mathrm{ord}(g)=p-1$ in $\Z_p^\ast$ gilt,
+dann den Beweis, dass $p$ eine Primzahl ist.
+
+$\mathrm{ord}(g)=p-1$ gilt genau dann, wenn $g^d\not\equiv 1\pmod p$ für alle
+$d=(p-1)/q$ gilt, wobei $q$ die Primteiler von $p-1$ durchläuft. Auch dies
+kann schnell nachgeprüft werden, wenn die Primteiler von $p-1$ bekannt sind.
+Diese lassen sich erstaunlich oft für den Vorgänger $p-1$ einer Primzahl $p$
+bestimmen. Besonders einfach ist dies natürlich für Primzahlen der Gestalt
+$p=2^k+1$, denn dann hat $p-1$ den einzigen Primteiler $2$, und es kann stets
+$g=3$ als primitive Wurzel genommen werden. 
+
+Für Details sei auf \cite{Graebe2012} verwiesen. 
+
+$p=2^k+1$ ist höchstens dann eine Primzahl, wenn $k$ selbst eine Zweierpotenz
+$k=2^m$ ist.  Solche Primzahlen werden als \textsc{Fermat}sche Primzahlen
+$F_m=2^{2^m}+1$ bezeichnet. Es ist bekannt, dass diese Zahlen für
+$m\in\cbr{0,1,2,3,4}$ prim sind. Für $5\le m\le 32$ (Stand Oktober 2020) ist
+bekannt, dass sie zusammengesetzt sind, für $m=33$ (Stand Oktober 2020) ist
+diese Frage nicht entschieden.  Man geht allerdings davon aus, dass alle
+weiteren \textsc{Fermat}-Zahlen zusammengesetzt sind.
+
+Für die Konstruierbarkeit regulärer Polygone mit Zirkel und Lineal ist diese
+Frage allerdings immens wichtig, denn \textsc{Gauß} hat gezeigt, dass für
+primes $p$ genau die regulären $p$-Ecke mit Zirkel und Lineal konstruierbar
+sind, für die $p$ eine \textsc{Fermat}sche Primzahl ist.
+
+Ein reguläres $p$-Eck kann aus einer komplexen $p$-ten Einheitswurzel
+$\zeta_p\in\C$ erzeugt werden, denn der zugehörige Punkt $Z_p$ in der
+komplexen Ebene liegt auf dem Einheitskreis um den Ursprung, und durch
+wiederholtes Abtragen des Abstands $EZ_p$ kann schließlich das $p$-Eck
+konstruiert werden, wobei $E=1$ für den Einheitspunkt auf der reellen Achse
+steht.
+
+$\zeta_p\in\C$ ist dabei eine algebraische Zahl, denn $\zeta_p$ ist Nullstelle
+des Polynoms $z^p-1=(z-1)\cdot \phi_p(z)$ und wegen $\zeta_p\neq 1$ auch
+Nullstelle des über $\Z$ irreduziblen Polynoms
+\begin{gather*}
+  \phi_p(z)=z^{p-1}+z^{p-2}+\dots+z^2+z+1,
+\end{gather*}
+also (über $\Q$) eine algebraische Zahl vom Grad $p-1$.  Für die
+\textsc{Fermat}sche Primzahl $p=F_m$ gilt gerade $p-1=2^k=2^{2^m}$ und die
+Idee der Verwirklichung der Konstruktion eines regulären $p$-Ecks besteht
+darin, eine Folge algebraischer Zahlen $A_1, A_2,\ldots$ zu finden, für die
+$K_1=\Q(A_1)$, $K_2=K_1(A_2), \ldots, K_m=K_{m-1}(A_m)=\Q(\zeta_p)$ jeweils
+quadratische Erweiterungen sind. Komplexe Zahlen aus solchen quadratischen
+Erweiterungen lassen sich in der komplexen Zahlenebene aus bis dahin
+konstruierten Zahlen als Schnittpunkte geeigneter Kreise erzeugen.
+
+Die Nullstellen $N_p=\cbr{\zeta_p^k, 1\le k\le p-1}$ des irreduziblen Polynoms
+$\phi_p(z)$ lassen sich als $N_p=\cbr{\zeta_p^k, k\in\Z_p^\ast}$ und damit als
+\begin{gather*}
+  N_p=\cbr{\zeta_p,\zeta_p^g, \zeta_p^{g^2}, \dots, \zeta_p^{g^{p-2}}}
+\end{gather*}
+darstellen, wobei $g$ eine primitive Wurzel modulo $p$ ist und die Exponenten
+$g^t$ wegen $\zeta_p^p=1$ natürlich modulo $p$ reduziert werden können.  Für
+$p=F_m$ und $g=3$ konstruieren wir die sukzessiven Erzeugenden quadratischer
+Erweiterungen $A_1, A_2$ usw. als geeignete Summen von Elementen aus $N_p$.
+
+Dies führen wir in den nächsten Kapiteln für $m\in\cbr{1,2,3,4}$ genauer aus.
+Für die dabei erforderlichen Rechnungen in Erweiterungskörpern von $\Q$ setzen
+wir das freie Computeralgebrasystem \textsc{Maxima} ein, für Details des 
+algorithmischen und programmiertechnischen Hintergrunds wird auf das Skript
+\cite{Graebe2020} verwiesen, dort insbesondere auf das Kapitel 4.
+
+\section{Reguläres 5-Eck}
+
+Wir setzen $A_1=\zeta_5+\zeta_5^4$, wobei sich der zweite Exponent aus
+$3^2\equiv 4 \pmod{5}$ ergeben hat. Wegen
+$\zeta_5^4+\zeta_5^3+\zeta_5^2+\zeta_5+1=0$ ist dann
+$\zeta_5^3+\zeta_5^2=-(A_1+1)$ und
+\begin{gather*}
+  -A_1(A_1+1)=\br{\zeta_5+\zeta_5^4}\br{\zeta_5^3+\zeta_5^2}
+  =\zeta_5^4+\zeta_5^3+\zeta_5^7+\zeta_5^6 =
+  \zeta_5^4+\zeta_5^3+\zeta_5^2+\zeta_5 = -1.
+\end{gather*}
+$A_1$ erfüllt also die quadratische Gleichung $A_1(A_1+1)-1=0$ und ist somit
+eine algebraische Zahl vom Grad 2 über $\Q$.  Ähnlich erfüllt $\zeta_5$ die
+Beziehung
+\begin{gather*}
+  1=\zeta_5^5 = \zeta_5\cdot \zeta_5^4 = \zeta_5(A_1-\zeta_5)
+\end{gather*}
+und liegt damit in einer quadratischen Erweiterung von $K_1=\Q(A_1)$.
+
+Hier dieselben Rechnungen mit \textsc{Maxima}.
+\begin{code}
+tellrat((z5\pw5-1)/(z5-1));\\
+algebraic:true;\\
+A1:sum(z5\pw(power\_mod(3,(2*i),5)),i,0,1);
+\end{code}
+\begin{gather*}
+  z+z^4
+\end{gather*}
+\begin{code}
+ratsimp(A1*(A1+1));  /* 1 */\\
+ratsimp(z5*(A1-z5)); /* 1 */
+\end{code}
+$A_1$ ist also Nullstelle des Polynoms $f_1=z(z+1)-1\in\Q[z]$ und $\zeta_5$
+Nullstelle des Polynoms $f_2=z(A_1-z)-1\in K_1[z]$. 
+\begin{code}
+f1:B1*(B1+1)-1;   \\
+f2:B2*(B1-B2)-1;  \\
+s1:solve(f1,B1);
+\end{code}
+\begin{gather*}
+  B_1 = \frac12\br{\sqrt5-1}
+\end{gather*}
+\begin{code}
+s2:solve(f2,B2);
+\end{code}
+\begin{gather*}
+  \zeta_5 = B_2 = \frac12\br{\sqrt{B_1^2-4}+B_1}
+\end{gather*}
+\begin{code}
+expand(subst(s1[2],s2[2]));
+\end{code}
+\begin{gather*}
+  \zeta_5 = \frac14\br{\sqrt5-1}+\frac12\sqrt{\frac12\br{-5-\sqrt5}}
+  = \frac{\sqrt5-1}{4}+\ii\sqrt{\frac{5+\sqrt5}{8}} = \cos\br{\frac{2\pi}{5}}
+  + \ii\sin\br{\frac{2\pi}{5}}
+\end{gather*}
+Die Konstruktion ist in diesem Fall einfach --
+$\cos\br{\frac{2\pi}{5}}=\frac{\sqrt5-1}{4}$ ist eine algebraische Zahl vom
+Grad 2 und lässt sich einfach aus einem rechtwinkligen $(2\times 1)$-Dreieck
+konstruieren, dessen Hypotenuse gerade die Länge $\sqrt{1^2+2^2}=\sqrt{5}$
+hat.  Auch die Konstruktion der Länge $\sin\br{\frac{2\pi}{5}}
+=\sqrt{\frac{5+\sqrt5}{8}}$ ist nicht schwierig -- wir konstruieren zunächst
+wie eben eine Strecke $s$ der Länge $\frac{5+\sqrt5}{8}$ und verwandeln danach
+ein $(s\times 1)$-Rechteck in ein flächengleiches Quadrat, das dann genau die
+Seitenlänge $\sin\br{\frac{2\pi}{5}}$ hat.  Auf ähnliche Weise lassen sich
+alle Streckenlängen konstruieren, die sich als algebraische Zahlen vom Grad 2
+aus gegebenen Streckenlängen darstellen lassen. 
+
+\section{Reguläres 17-Eck}
+
+\section{Reguläres 257-Eck}
+
+Die moderne Begründung der Konstruierbarkeit des regulären 257-Ecks mit Zirkel
+und Lineal erfolgt durch Folgerungen aus der \textsc{Galois}-Theorie.
+
+Der Mittelpunkt des 257-Ecks liegt im Ursprung eines komplexen
+Koordinatensystems, d.h. die reellen Zahlen finden sich auf der Abszissenachse
+und die Vielfachen von $\ii$ mit $\ii^{2}=-1$ auf der Ordinatenachse.
+
+Alle Eckpunkte des 257-Ecks liegen auf einen Kreis. Zur Vereinfachung wählt
+man den Einheitskreis mit dem Radius $r = 1$. Das 257-Eck wird so gedreht,
+dass ein Eckpunkt der Punkt $(0,1)$ ist. Die Eckpunkte des 257-Ecks erfüllen
+die komplexe Gleichung $z^{257} = 1$.
+
+Die Gleichung $z^{257} =1$ soll im Bereich der komplexen Zahlen gelöst werden,
+also $z^{257} - 1 = 0$. Der Winkel $\alpha$ mit dem Scheitelpunkt im Ursprung
+des Koordinatensystems zwischen Abszissenachse und Strahl durch den Punkt
+$P_1$, beträgt in Bogenmaß $\alpha= \frac{2\pi}{257}$. Also ist $z =
+\cos(\alpha) + \ii\sin(\alpha)$.
+
+So ist nach der \textsc{Euler}schen Identität $z =
+\mathrm{e}^{\frac{2\pi\ii}{257}}$.  Es ist überhaupt nicht schwierig, wenn man
+es mit komplexen Zahlen zu tun hat. Man kann über den Realteil von $z$, also
+$\cos(\alpha)$, der auf der Abszissenachse zu finden ist, den Schnittpunkt mit
+dem Einheitskreis finden. Dieser Punkt ist dann einer der Eckpunkte des
+regulären 257-Ecks.
+
+Im Bereich der komplexen Zahlen hat die Gleichung $z^{257} = 1$ nach dem
+\textsc{Gauss}schen Fundamentalsatz der Algebra 257 Lösungen. Wie man sofort
+sieht, ist $z = 1$ eine (triviale) reelle Lösung. Die anderen 256 Lösungen
+ergeben sich als Nullstellen des Polynoms
+\begin{gather*}
+   \frac{z^{257}-1}{z-1}=z^{256}+z^{255}+\ldots+z^3+z^2+z+1.\tag{2}
+\end{gather*}
+Diese Nullstellen $z_i$, $i=0,\ldots,256$, lassen sich alle als $z_i=\zeta^i$
+für eine geeignete komplexe Zahl $\zeta$ darstellen; die Multiplikation zweier
+Nullstellen $z_i\cdot z_j=\zeta^{i+j}$ entspricht dabei der Addition der
+Exponenten, wobei wegen $\zeta^{257}=1$ der Exponent $i+j$ modulo 257
+reduziert, also in der additiven Gruppe des Restklassenrings $\Z_{257}$
+gerechnet werden kann.
+
+Kriterium der Auswahl ist der Index der $z_i$ ($i = 1, 2, ..., 257$). Man
+verwendet die Restklassen der Indizes modulo 2, also 0 oder 1. (Die Restklasse
+kommt in den Indizes der Mengen $M_0$ und $M_1$ zum Ausdruck). So nehmen wir
+alle 128 Lösungen $z_i = z^{i \pmod{257}}$ mit geraden Indizes in die Menge
+$M_0$, die restlichen 128 Lösungen in die andere Menge $M_1$. Es sei 
+\begin{align*}
+  A_0&= \sum_{0<i<256, i\ \text{ungerade}}{z^{3^i \pmod{257}}}
+  =z^3+z^{27}+\ldots+z^{238}+z^{86} \quad \text{und}\\
+  A_1 &= \sum_{0\le i <256, i\ \text{gerade}}{z^{3^i \pmod{257}}} =
+  z^1+z^9+\ldots+z^{165}+z^{200}.
+\end{align*}
+% Maxima:
+%% tellrat((z^(257)-1)/(z-1));
+%% algebraic:true;
+%% A0:sum(z^(power_mod(3,(2*i+1),257)),i,0,127);
+%% A1:sum(z^(power_mod(3,(2*i),257)),i,0,127);
+%% ratsimp(A0+A1);  /*  - 1 */
+%% ratsimp(A0*A1);  /* - 64 */
+
+Wie man sofort sieht, ist $A_0 + A_1 = -1$. Das Produkt $A_0 \cdot A_1$ ergibt
+nach Ausmultiplizieren eine Summe von $128 \cdot 128 = 16384$ Summanden, die
+sich zu $-64$ vereinfachen lässt. Beides kann mit \textsc{Maxima}\footnote{Ein
+  freies CAS, das von Lehrern gern eingesetzt wird,
+  \url{http://maxima.sourceforge.net/}} schnell nachgeprüft werden:
+\begin{code}
+tellrat((z\pw(257)-1)/(z-1));\\
+algebraic:true;\\
+A0:sum(z\pw(power\_mod(3,(2*i+1),257)),i,0,127);\\
+A1:sum(z\pw(power\_mod(3,(2*i),257)),i,0,127);\\
+ratsimp(A0+A1); /*  -1 */\\
+ratsimp(A0*A1); /* -64 */
+\end{code}
+
+Die Gleichungen $A_0 + A_1 = -1$ und $A_0 \cdot A_1 = -64$ führen nach dem
+\textsc{Vieta}schen Wurzelsatz zu der quadratischen Gleichung $s^2 + s - 64 =
+0$ mit 
+\begin{gather*}
+  A_0=\frac{-1+\sqrt{257}}{2}\quad\text{und}\quad A_1=\frac{-1-\sqrt{257}}{2}.
+\end{gather*}
+$A_0$ und $A_1$ sind beides reelle Zahlen. Man findet sie auf der
+Abzissenachse des komplexen Koordinatensystems (siehe Schritt 36 der
+Konstruktion des regulären 257-Ecks).
+
+Als nächstes zerlegt man die Menge der Lösungen mit geraden Indices $M_{0}$
+weiter in zwei gleichmächtige Mengen $M_{0,0}$ und $M_{0,2}$. In der Menge
+$M_{0,0}$ sind jetzt alle Lösungen mit durch 4 teilbaren Indizes und in der
+Menge $M_{0,2}$ alle Lösungen mit geradem, aber nicht durch 4 teilbaren
+Indizes.  Man wählt den Ansatz 
+\begin{align*}
+  B_0 &= z^1 + z^{81} + z^{136} + ... + z^{240} + z^{165}\quad\text{und}\\ B_2
+  &= z^9 + z^{215} + z^{196} + ... + z^{104} + z^{200}.
+\end{align*}
+Es ist $B_0 + B_2 = A_0$ und $B_0 \cdot B_2 = -164$. In den Tabellen 3 und 4
+ist diese Multiplikation vollständig dargestellt.
+
+\textsc{Maxima} liefert allerdings ein anderes Ergebnis (Fortsetzung der
+Rechnung oben): 
+\begin{code}
+B0:sum(z\pw(power\_mod(3,(4*i),257)),i,0,63);\\
+B2:sum(z\pw(power\_mod(3,(4*i+2),257)),i,0,63);\\
+ratsimp(B0+B2+A0); /*  - 1 */\\
+ratsimp(B0*B2);  /* - 16 */
+\end{code}
+
+% Maxima: Fortsetzung
+%% B0:sum(z^(power_mod(3,(4*i),257)),i,0,63);
+%% B2:sum(z^(power_mod(3,(4*i+2),257)),i,0,63);
+%% ratsimp(B0+B2+A0); /*  - 1 */
+%% ratsimp(B0*B2);  /* - 16 */
+
+Daraus erhält man die quadratische Gleichung $s^{2}- A_{0} \cdot s - 16 = 0$
+mit den Lösungen
+\begin{gather*}
+  B_0 = \frac{A_0}{2}+ \sqrt{\br{\frac{A_0}{2}}^2+16}\quad\text{und}\quad B_2
+  = \frac{A_0}{2}- \sqrt{\br{\frac{A_0}{2}}^2+16}.
+\end{gather*}
+
+\begin{thebibliography}{xxx}
+\bibitem{Graebe2012} Hans-Gert Gräbe. Algorithmen für Zahlen und Primzahlen.
+  Eagle Verlag, Leipzig 2012. ISBN 978-3-937219-58-5. 
+\bibitem{Graebe2020} Hans-Gert Gräbe.  Skript zum Kurs \emph{Einführung in das
+  symbolische Rechnen}, Sommersemester 2020.
+  \url{http://www.informatik.uni-leipzig.de/~graebe/skripte/esr20.pdf}
+\end{thebibliography}
+\end{document}
