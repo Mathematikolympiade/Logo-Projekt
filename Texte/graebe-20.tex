@@ -93,13 +93,13 @@ also (über $\Q$) eine algebraische Zahl vom Grad $p-1$.  Für die
 \textsc{Fermat}sche Primzahl $p=F_m$ gilt gerade $p-1=2^k=2^{2^m}$ und die
 Idee der Verwirklichung der Konstruktion eines regulären $p$-Ecks besteht
 darin, eine Folge algebraischer Zahlen $A_1, A_2,\ldots$ zu finden, für die
-$K_1=\Q(A_1)$, $K_2=K_1(A_2), \ldots, K_m=K_{m-1}(A_m)=\Q(\zeta_p)$ jeweils
+$K_1=\Q(A_1)$, $K_2=K_1(A_2), \ldots, K_k=K_{k-1}(A_k)=\Q(\zeta_p)$ jeweils
 quadratische Erweiterungen sind. Komplexe Zahlen aus solchen quadratischen
 Erweiterungen lassen sich in der komplexen Zahlenebene aus bis dahin
 konstruierten Zahlen als Schnittpunkte geeigneter Kreise erzeugen.
 
-Die Nullstellen $N_p=\cbr{\zeta_p^k, 1\le k\le p-1}$ des irreduziblen Polynoms
-$\phi_p(z)$ lassen sich als $N_p=\cbr{\zeta_p^k, k\in\Z_p^\ast}$ und damit als
+Die Nullstellen $N_p=\cbr{\zeta_p^i, 1\le i\le p-1}$ des irreduziblen Polynoms
+$\phi_p(z)$ lassen sich als $N_p=\cbr{\zeta_p^i, i\in\Z_p^\ast}$ und damit als
 \begin{gather*}
   N_p=\cbr{\zeta_p,\zeta_p^g, \zeta_p^{g^2}, \dots, \zeta_p^{g^{p-2}}}
 \end{gather*}
@@ -183,6 +183,55 @@ alle Streckenlängen konstruieren, die sich als algebraische Zahlen vom Grad 2
 aus gegebenen Streckenlängen darstellen lassen. 
 
 \section{Reguläres 17-Eck}
+
+Mit $\zeta=\zeta_{17}$ konstruieren wir die drei Größen nach demselben Muster
+wie oben
+\begin{align*}
+  A_1=\sum_{i=0}^7{\zeta^{3^{2i}}},\
+  A_2=\sum_{i=0}^3{\zeta^{3^{4i}}},\
+  A_3=\sum_{i=0}^1{\zeta^{3^{8i}}}=\zeta+\zeta^{16}=2\cos\br{\frac{2\pi}{17}}
+\end{align*}
+
+\begin{code}  
+tellrat((z1\pw(17)-1)/(z1-1));\\
+algebraic:true;\\
+A1:sum(z1\pw(power\_mod(3,(2*i),17)),i,0,7);\\
+A2:sum(z1\pw(power\_mod(3,(4*i),17)),i,0,3);\\
+A3:sum(z1\pw(power\_mod(3,(8*i),17)),i,0,1);
+\end{code}
+Wir finden wieder einfach die quadratischen Gleichungen für $A_1$ über $\Q$
+und für $A_2$ über $K_1=\Q[A_1]$ 
+\begin{code}  
+ratsimp(A1*(A1+1));  /* 4 */\\
+ratsimp(A2*(A2-A1)); /* 1 */
+\end{code}
+Etwas mehr Mühe bereitet es zu zeigen, dass $A_3(A_3-A_2)$ in
+$K_2=K_1[A_2]=\Q[A_1,A_2]$ liegt. $K_2$ ist eine Körpererweiterung vom Grad 4
+über $Q$ mit der reduzierten Basis $T_\text{red}=\cbr{1,A_1,A_2,A_1A_2}$, aus
+der wir durch einen Ansatz mit unbestimmten Koeffizienten die erforderliche
+$\Q$-lineare Kombination für $A_3(A_3-A_2)$ bestimmen.  $\zeta$ liegt
+schließlich in einer quadratischen Erweiterung von $K_3=K_2[A_3]$.
+\begin{code}  
+ratsimp(2*A3*(A3-A2)-3-A1+A2+A1*A2); /* 0 */\\
+ratsimp(z1*(z1-A3)); /* -1 */
+\end{code}
+Wir können daraus die Ausdrücke für $A_1$, $A_2$, $A_3$ und $\zeta$ als
+geschachtelte Quadratwurzeln leicht bestimmen.
+\begin{code}  
+f1:B1*(B1+1)-4;   \\
+f2:B2*(B2-B1)-1;  \\
+f3:2*B3*(B2-B3)+3+B1-(B2+B1*B2);\\  
+f4:B4*(B4-B3)+1;  \\
+s1:solve(f1,B1);  /* B1 = (sqrt(17)-1)/2 */\\
+s2:solve(f2,B2);  /* B2 = (sqrt(B1\pw2+4)+B1)/2 */\\
+s3:solve(f3,B3);  /* B3 = (sqrt(B2\pw2+((-2*B1)-2)*B2+2*B1+6)+B2)/2 */\\
+s4:solve(f4,B4);  /* B4 = (sqrt(B3\pw2-4)+B3)/2 */\\[1em]
+u1:ratsimp(expand(subst(s3[2],s4[2])));
+u2:ratsimp(expand(subst(s2[2],u1)));
+u3:ratsimp(expand(subst(s1[2],u2)));
+\end{code}
+Mit Blick auf die schiere Größe dieser Ausdrücke sind sie hier nicht reproduziert
+
 
 \section{Reguläres 257-Eck}
 

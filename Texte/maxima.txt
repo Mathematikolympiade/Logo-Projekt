@@ -13,7 +13,33 @@ s2:solve(f2,B2);  /* B2 = (sqrt(B1^2-4)+B1)/2 */
 expand(subst(s1[2],s2[2]));
 /* B2 = sqrt(5)/4+sqrt((-sqrt(5)/2)-5/2)/2-1/4 */
 
+/* 17-Eck */
 
+tellrat((z1^17-1)/(z1-1));
+algebraic:true;
+A1:sum(z1^(power_mod(3,(2*i),17)),i,0,7);
+ratsimp(A1*(A1+1));  /* 4 */
+A2:sum(z1^(power_mod(3,(4*i),17)),i,0,3);
+ratsimp(A2*(A2-A1)); /* 1 */
+A3:sum(z1^(power_mod(3,(8*i),17)),i,0,1);
+ratsimp(2*A3*(A2-A3)+3+A1-(A2+A1*A2)); /* 0 */
+ratsimp(z1*(z1-A3)); /* -1 */
+
+f1:B1*(B1+1)-4;   
+f2:B2*(B2-B1)-1;  
+f3:2*B3*(B2-B3)+3+B1-(B2+B1*B2);  
+f4:B4*(B4-B3)+1;  
+s1:solve(f1,B1);  /* B1 = (sqrt(17)-1)/2 */
+s2:solve(f2,B2);  /* B2 = (sqrt(B1^2+4)+B1)/2 */
+s3:solve(f3,B3);  /* B3 = (sqrt(B2^2-2*(B1+1)*B2+2*B1+6)+B2)/2 */
+s4:solve(f4,B4);  /* B4 = (sqrt(B3^2-4)+B3)/2 */
+u1:ratsimp(expand(subst(s1[2],s2[2])));
+/* B2 = (sqrt(17)+sqrt(2)*sqrt(17-sqrt(17))-1)/4 */
+u2:ratsimp(expand(subst([s1[2],u1],s3[2])));
+/* B3 =
+(sqrt(2)*sqrt(-sqrt(17-sqrt(17))*(sqrt(2)*sqrt(17)+3*sqrt(2))+6*sqrt(17)+34)
+ +sqrt(17)+sqrt(2)*sqrt(17-sqrt(17))-1)/8 */
+u3:ratsimp(expand(subst([s1[2],u1,u2],s4[2])));
 
 /* 257-Eck */
 
