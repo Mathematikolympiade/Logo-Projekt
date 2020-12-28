@@ -18,10 +18,10 @@ expand(subst(s1[2],s2[2]));
 tellrat((z1^17-1)/(z1-1));
 algebraic:true;
 A1:sum(z1^(power_mod(3,(2*i),17)),i,0,7);
-ratsimp(A1*(A1+1));  /* 4 */
 A2:sum(z1^(power_mod(3,(4*i),17)),i,0,3);
-ratsimp(A2*(A2-A1)); /* 1 */
 A3:sum(z1^(power_mod(3,(8*i),17)),i,0,1);
+ratsimp(A1*(A1+1));  /* 4 */
+ratsimp(A2*(A2-A1)); /* 1 */
 ratsimp(2*A3*(A2-A3)+3+A1-(A2+A1*A2)); /* 0 */
 ratsimp(z1*(z1-A3)); /* -1 */
 
@@ -38,16 +38,43 @@ u1:ratsimp(expand(subst(s1[2],s2[2])));
 u2:ratsimp(expand(subst([s1[2],u1],s3[2])));
 /* B3 =
 (sqrt(2)*sqrt(-sqrt(17-sqrt(17))*(sqrt(2)*sqrt(17)+3*sqrt(2))+6*sqrt(17)+34)
+ +sqrt(17)+sqrt(2)*sqrt(17-sqrt(17))-1)/8
+= (sqrt(2)*sqrt(-sqrt(17-sqrt(17))*(sqrt(2)*sqrt(17)+3*sqrt(2))+6*sqrt(17)+34)
  +sqrt(17)+sqrt(2)*sqrt(17-sqrt(17))-1)/8 */
 u3:ratsimp(expand(subst([s1[2],u1,u2],s4[2])));
 
 /* 257-Eck */
 
-tellrat((z^(257)-1)/(z-1));
+tellrat((z2^(257)-1)/(z2-1));
 algebraic:true;
-A0:sum(z^(power_mod(3,(2*i),257)),i,0,127);
-A1:-1-A0;
-ratsimp(A0*A1);  /* - 64 */
+A1:sum(z2^(power_mod(3,(2*i),257)),i,0,127);
+A2:sum(z2^(power_mod(3,(4*i),257)),i,0,63);
+A3:sum(z2^(power_mod(3,(8*i),257)),i,0,31);
+A4:sum(z2^(power_mod(3,(16*i),257)),i,0,15);
+A5:sum(z2^(power_mod(3,(32*i),257)),i,0,7);
+A6:sum(z2^(power_mod(3,(64*i),257)),i,0,3);
+A7:sum(z2^(power_mod(3,(128*i),257)),i,0,1);
+ratsimp(A1*(A1+1));  /* 64 */
+ratsimp(A2*(A2-A1)); /* 16 */
+ratsimp(A3*(A3-A2)-A1-2*A2); /* 5 */
+u:ratsimp(A4*(A4-A3)); /* ? */
+ratsimp(A5*(A5-A4)); /* ? */
+ratsimp(A6*(A6-A5)); /* ? */
+ratsimp(A7*(A7-A6)); /* ? */
+ratsimp(z2*(z2-A7)); /* -1 */
+
+/* Hilfsfunktionen zum Erzeugen generischer Linearkombinationen */
+
+createProducts(vars):=block([f,r],
+if length(vars)=1 then return (append([1],vars)),
+f:first(vars),
+r:createProducts(rest(vars)),
+append(r,makelist(f*u,u,r)));
+
+createGenericExpression(vars):=block([u:createProducts(vars)],
+sum(simplode(["a",i])*u[i],i,1,length(u)));
+
+
 
 B0:sum(z^(power_mod(3,(4*i),257)),i,0,63);
 B1:sum(z^(power_mod(3,(4*i+1),257)),i,0,63);
