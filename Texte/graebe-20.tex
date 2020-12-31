@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 
 \newcommand{\br}[1]{\ensuremath{\left(#1\right)}}
+\newcommand{\sbr}[1]{\ensuremath{\left[#1\right]}}
 \newcommand{\cbr}[1]{\ensuremath{\left\{#1\right\}}}
 \newcommand{\ii}{\mathrm{i}}
 \newcommand{\N}{\mathbbm{N}}
@@ -20,7 +21,7 @@
 
 \author{Hans-Gert Gräbe}
 \title{Zur Konstruktion regulärer Polygone} 
-\date{Version vom 28.12.2020}
+\date{Version vom 31.12.2020}
 
 \begin{document} 
 \maketitle         
@@ -150,7 +151,7 @@ $A_1$ ist also Nullstelle des Polynoms $f_1=z(z+1)-1\in\Q[z]$ und $\zeta_5$
 Nullstelle des Polynoms $f_2=z(A_1-z)-1\in K_1[z]$. 
 \begin{code}
 f1:B1*(B1+1)-1;   \\
-f2:B2*(B1-B2)-1;  \\
+f2:B2*(B2-B1)+1;  \\
 s1:solve(f1,B1);
 \end{code}
 \begin{gather*}
@@ -172,7 +173,7 @@ expand(subst(s1[2],s2[2]));
 \end{gather*}
 Die Konstruktion ist in diesem Fall einfach --
 $\cos\br{\frac{2\pi}{5}}=\frac{\sqrt5-1}{4}$ ist eine algebraische Zahl vom
-Grad 2 und lässt sich einfach aus einem rechtwinkligen $(2\times 1)$-Dreieck
+Grad 2 und lässt sich aus einem rechtwinkligen $(2\times 1)$-Dreieck
 konstruieren, dessen Hypotenuse gerade die Länge $\sqrt{1^2+2^2}=\sqrt{5}$
 hat.  Auch die Konstruktion der Länge $\sin\br{\frac{2\pi}{5}}
 =\sqrt{\frac{5+\sqrt5}{8}}$ ist nicht schwierig -- wir konstruieren zunächst
@@ -180,7 +181,7 @@ wie eben eine Strecke $s$ der Länge $\frac{5+\sqrt5}{8}$ und verwandeln danach
 ein $(s\times 1)$-Rechteck in ein flächengleiches Quadrat, das dann genau die
 Seitenlänge $\sin\br{\frac{2\pi}{5}}$ hat.  Auf ähnliche Weise lassen sich
 alle Streckenlängen konstruieren, die sich als algebraische Zahlen vom Grad 2
-aus gegebenen Streckenlängen darstellen lassen. 
+aus gegebenen Streckenlängen darstellen lassen.
 
 \section{Reguläres 17-Eck}
 
@@ -247,7 +248,7 @@ u2:ratsimp(expand(subst([s1[2],u1],s3[2])));
 
 \section{Reguläres 257-Eck}
 
-Wir setzen wieder $\zeta=\zeta_{257}$ und 
+Wir setzen wieder $\zeta=\zeta_{257}$,
 \begin{align*}
   &A_1=\sum_{i=0}^{127}{\zeta^{3^{2i}}},\
   A_2=\sum_{i=0}^{63}{\zeta^{3^{4i}}},\
@@ -256,9 +257,179 @@ Wir setzen wieder $\zeta=\zeta_{257}$ und
   &A_5=\sum_{i=0}^{7}{\zeta^{3^{32i}}}=\zeta^{256}+\zeta^{253}+\zeta^{241}
   +\zeta^{193}+\zeta^{64}+\zeta^{16}+\zeta^4+\zeta,\\
   & A_6=\sum_{i=0}^{3}{\zeta^{3^{64i}}}=\zeta^{256}+\zeta^{241}+\zeta^{16}+\zeta,\\
-  &A_7=\sum_{i=0}^1{\zeta^{3^{128i}}}=\zeta+\zeta^{256}=2\cos\br{\frac{2\pi}{257}}.
+  &A_7=\sum_{i=0}^1{\zeta^{3^{128i}}}=\zeta+\zeta^{256}=2\cos\br{\frac{2\pi}{257}},
 \end{align*}
+$K_i=K_{i-1}[A_i]$ mit $K_0=\Q$ und zeigen, dass $K_i/K_{i-1}$ eine
+quadratische Körpererweiterung ist, indem wir wie in den bisherigen
+Abschnitten nachweisen, dass $A_i\br{A_i-A_{i-1}}$ in $K_{i-1}$
+liegt\footnote{$A_i\not\in K_{i-1}$ ergibt sich daraus, dass $K_8=K_7[\zeta]$
+  ebenfalls eine quadratische Erweiterung ist, $K_8=\Q[\zeta]$ aber eine
+  Erweiterung vom Grad $2^8=256$ über $\Q$. Es kann also in keinem
+  Zwischenschritt $K_i=K_{i-1}$ sein, sonst wäre der Erweiterungsgrad des
+  Körperturms zu klein.}.
 
+Dies lässt sich für die ersten $A_i$ mit \textsc{Maxima} noch leicht
+nachvollziehen:
+\begin{code}
+tellrat((z2\pw(257)-1)/(z2-1));\\
+algebraic:true;\\
+A1:sum(z2\pw(power\_mod(3,(2*i),257)),i,0,127);\\
+A2:sum(z2\pw(power\_mod(3,(4*i),257)),i,0,63);\\
+A3:sum(z2\pw(power\_mod(3,(8*i),257)),i,0,31);\\
+A4:sum(z2\pw(power\_mod(3,(16*i),257)),i,0,15);\\
+A5:sum(z2\pw(power\_mod(3,(32*i),257)),i,0,7);\\
+A6:sum(z2\pw(power\_mod(3,(64*i),257)),i,0,3);\\
+A7:sum(z2\pw(power\_mod(3,(128*i),257)),i,0,1);\\
+ratsimp(A1*(A1+1)-64);   /* 0 */\\
+ratsimp(A2*(A2-A1)-16);  /* 0 */
+\end{code}
+Auch für $A_3$ lässt sich eine solche Darstellung $A_3\br{A_3-A_2}=A_1+2A_2+5$
+als Element von $K_2=\Q[A_1,A_2]$ noch „erraten“.
+\begin{code}
+ratsimp(A3*(A3-A2)-A1-2*A2-5); /* 0 */
+\end{code}
+Generell kann jedes Element aus $K_t=\Q[A_1,\ldots,A_t]$ für $t\ge 1$
+eindeutig als Linearkombination der $2^t$ quadratfreien Produkte der
+$A_1,\ldots,A_t$ dargestellt werden, siehe \cite[Kapitel 4]{Graebe2020}.  Wir
+können also einen Ansatz mit einer solchen Linearkombination mit $2^t$
+generischen Koeffizienten wählen und durch Koeffizientenvergleich bestimmen,
+ob eine solche Darstellung für $A_{t+1}\br{A_{t+1}-A_t}$ existiert. Dies führt
+in $\Q[\zeta]$ auf ein lineares Gleichungssystem mit 257 Gleichungen und $2^t$
+Unbestimmten. Der folgende \textsc{Maxima}-Code setz diese Rechnungen um.
+\begin{code}  
+createProducts(vars):=block([f,r],\+\\
+  if length(vars)=1 then return (append([1],vars)),\\
+  f:first(vars),\\
+  r:createProducts(rest(vars)),\\
+  append(r,makelist(f*u,u,r))\-\\
+)\$\\[1em]
+
+createGenericExpression(vars):=block([u:createProducts(vars)],\+\\
+  sum(a[i]*u[i],i,1,length(u))\-\\
+)\$\\[1em]
+
+extractCoefficients(f,z):=makelist(coeff(f,z,i),i,0,hipow(f,z))\$\\[1em]
+
+findExpression(u,vars,z):=block([p,q,v,sol],\+\\
+p:createGenericExpression(vars),\\
+q:extractCoefficients(ratsimp(ev(p)+u),z),\\
+v:makelist(a[i],i,1,2\pw(length(vars))),\\
+sol:solve(q,v),\\
+subst(sol[1],p)\-\\
+)\$
+\end{code}
+Zu einer gegebenen \emph{Liste} \texttt{vars} von Variablen der Länge
+$t=\texttt{length(vars)}$ erzeugt \texttt{create\-Products} eine Liste der
+$2^t$ quadratfreien Produkte, die Funktion \texttt{createGenericExpression}
+erzeugt daraus eine generische Linearkombination mit Koeffizienten
+$a_i,\ i=1,\ldots,2^t$, die Funktion \texttt{extractCoefficients} extrahiert
+eine Liste der Koeffizienten aus dem univarianten Polynom $f(z)$ und
+\texttt{findExpression} fasst schließlich alles zur Berechnung der gesuchten
+Linearkombination zusammen, falls diese existiert. Zu letzterem weitere
+Erläuterungen:
+\begin{itemize}
+\item Es wird vorausgesetzt, dass \texttt{vars} die Liste
+  $\sbr{A_1,\ldots,A_t}$ mit \emph{symbolischen $A_i$} enthält.
+\item Bei der Berechnung von \texttt{ratsimp(ev(p)+u)} wird davon ausgegangen,
+  dass die Rechnungen in $K=\Q[\zeta]$ ausgeführt werden. \texttt{ev(p)}
+  evaluiert den Ausdruck $p$ als Element von $K$, \texttt{ratsimp} überführt
+  das Ergebnis in seine Normalform in $K$ als Linearkombination von
+  $1=\zeta^0, \zeta,\ldots, \zeta^{256}$.   
+\item $q$ enthält also eine Liste von 257 Linearformen in
+  $a_1,\ldots,a_{2^t}$, deren Nullstelle bestimmt wird.
+\item Im letzten Schritt werden diese Werte für die generischen Koeffizienten
+  von $p$ eingesetzt und damit das gesuchte Element aus $K_t$ zurückgegeben,
+  sofern das lineare Gleichungssystem eine Lösung besitzt. 
+\end{itemize}
+Die \emph{Existenz} einer solchen Lösung kann man zahlentheoretisch begründen,
+für unsere Konstruktion würde uns das aber nicht weiterhelfen; wir brauchen
+die konkrete Lösung. Wenn eine solche produziert wird, wissen wir zugleich,
+dass \emph{im untersuchten konkreten Fall} eine solche Lösung existiert. 
+
+Für $A_4$ berechnen wir damit den folgenden Zusammenhang:
+\begin{code}
+u:ratsimp(A4*(A4-A3));\\
+p:findExpression(u,['A1,'A2,'A3],z2);
+%/* ((-A1*A2*A3)+9*A2*A3-6*A1*A3+44*A3-A1*A2+11*A2+16*A1-108)/8 */
+\end{code}
+\begin{gather*}
+  p=\frac18\br{A_{1}A_{2}A_{3}+9A_{2}A_{3}-6A_{1}A_{3}+44A_{3}-
+    A_{1}A_{2}+11A_{2}+16A_{1}-108}
+\end{gather*}
+Die Probe
+\begin{code}
+ratsimp(A4*(A4-A3)+ev(p)); /* 0 */
+\end{code}
+zeigt, dass richtig gerechnet wurde.
+Analog erhalten wird für $A_5$ 
+\begin{code}
+u:ratsimp(A5*(A5-A4)); \\
+p:findExpression(u,['A1,'A2,'A3,'A4],z2);\\
+ratsimp(A5*(A5-A4)+ev(p)); /* 0 */
+\end{code}
+\begin{align*}
+  p=\frac{1}{316}\Big(&
+  -A_{1}A_{2}A_{3}A_{4}+5A_{2}A_{3}A_{4}+2A_{1}A_{3}A_{4} +92A_{3}A_{4}
+  -8A_{1}A_{2}A_{4}-28A_{2}A_{4}\\ &+16A_{1}A_{4}+192A_{4} +17A_{2}A_{3}
+  -17A_{1}A_{3}-68 A_{3}-34A_{2}-34A_{1}-816\Big),
+\end{align*}
+für $A_6$
+\begin{code}
+u:ratsimp(A6*(A6-A5));\\
+p:findExpression(u,['A1,'A2,'A3,'A4,'A5],z2);\\
+ratsimp(A6*(A6-A5)+ev(p)); /* 0 */
+\end{code}
+\begin{align*}
+  p=\frac{1}{8704}\Big(& 77A_{1}A_{2}A_{3}A_{4}A_{5}-6775A_{2}A_{3}A_{4}A_{5}
+  +5756A_{1}A_{3}A_{4}A_{5}-36804A_{3}A_{4}A_{5}\\ &+827A_{1}A_{2}A_{4}A_{5}
+  -6277A_{2}A_{4}A_{5}-1484A_{1}A_{4}A_{5}+38836A_{4}A_{5}
+  +1989A_{1}A_{2}A_{3}A_{5}\\ &-15419A_{2}A_{3}A_{5}+9996A_{1}A_{3}A_{5}
+  -71604A_{3}A_{5}+3247A_{1}A_{2}A_{5}-21777A_{2}A_{5} \\ &-8092A_{1}A_{5}
+  +63716A_{5} -478A_{1}A_{2}A_{3}A_{4}+4226A_{2}A_{3}A_{4}
+  -10536A_{1}A_{3}A_{4} \\ &+69816A_{3}A_{4}+ 2262A_{1}A_{2}A_{4}
+  -9066A_{2}A_{4} -2008A_{1}A_{4}-19608A_{4}\\&-374A_{1}A_{2}A_{3}
+  +1802A_{2}A_{3} -19176A_{1}A_{3} +146200A_{3}+5678A_{1}A_{2} \\&-40018A_{2}
+  -4216A_{1} +26248 \Big) 
+\end{align*}
+und schließlich für $A_7$
+\begin{code}
+u:ratsimp(A7*(A7-A6));\\
+p:findExpression(u,['A1,'A2,'A3,'A4,'A5,'A6],z2);\\
+ratsimp(A7*(A7-A6)+ev(p)); /* 0 */
+\end{code}
+\begin{align*}
+  p=\frac{1}{22438912}\Big(& 7293649A_{1}A_{2}A_{3}A_{4}A_{5}A_{6}
+  -205190575A_{2}A_{3}A_{4}A_{5}A_{6} -36869796A_{1}A_{3}A_{4}A_{5}A_{6}
+  \\&+281073948A_{3}A_{4}A_{5}A_{6} +98898947A_{1}A_{2}A_{4}A_{5}A_{6}
+  -749595069A_{2}A_{4}A_{5}A_{6}\\&-157833580A_{1}A_{4}A_{5}A_{6}
+  +1203410708A_{4}A_{5}A_{6}+92882237A_{1}A_{2}A_{3}A_{5}A_{6}
+  \\&-697223363A_{2}A_{3}A_{5}A_{6}-135386708A_{1}A_{3}A_{5}A_{6}
+  +1013990636A_{3}A_{5}A_{6}\\&+340337671A_{1}A_{2}A_{5}A_{6}
+  -2563803065A_{2}A_{5}A_{6}-542503932A_{1}A_{5}A_{6} \\&+4089440644A_{5}A_{6}
+  +35154514A_{1}A_{2}A_{3}A_{4}A_{6} -263242670A_{2}A_{3}A_{4}A_{6}
+  \\&-66105608A_{1}A_{3}A_{4}A_{6} +493503096A_{3}A_{4}A_{6}
+  +133592438A_{1}A_{2}A_{4}A_{6} \\&-1007822858A_{2}A_{4}A_{6}
+  -210913176A_{1}A_{4}A_{6} +1560283240A_{4}A_{6}
+  \\&+121731594A_{1}A_{2}A_{3}A_{6} -914149942A_{2}A_{3}A_{6}
+  -212212904A_{1}A_{3}A_{6} \\&+1595813528A_{3}A_{6} +457871710A_{1}A_{2}A_{6}
+  -3450071970A_{2}A_{6}\\&-723233720A_{1}A_{6}+5409102024A_{6}
+  +20207608A_{1}A_{2}A_{3}A_{4}A_{5}\\&-150170216A_{2}A_{3}A_{4}A_{5}
+  -46105728A_{1}A_{3}A_{4}A_{5}+333512736A_{3}A_{4}A_{5}
+  \\&+79330952A_{1}A_{2}A_{4}A_{5}-594383800A_{2}A_{4}A_{5}
+  -124874336A_{1}A_{4}A_{5}\\&+890885984A_{4}A_{5} +70615416A_{1}A_{2}A_{3}A_{5}
+  -530022600A_{2}A_{3}A_{5}\\&-138755360A_{1}A_{3}A_{5}+1035400096A_{3}A_{5}
+  +270886568A_{1}A_{2}A_{5}\\&-2037877720A_{2}A_{5}-421768096A_{1}A_{5}
+  +3182112224A_{5}\\&+30271552A_{1}A_{2}A_{3}A_{4} -229124736A_{2}A_{3}A_{4}
+  -25110208A_{1}A_{3}A_{4}\\&+202610816A_{3}A_{4}+104847776A_{1}A_{2}A_{4}
+  -794462176A_{2}A_{4}\\&-168940160A_{1}A_{4}+1322052096A_{4}
+  +101207936A_{1}A_{2}A_{3} \\&-760308544A_{2}A_{3}-118495168A_{1}A_{3}
+  +892714880A_{3}\\&+361868256A_{1}A_{2}-2714253728A_{2}-581773184A_{1}
+  +4360656128\Big)
+\end{align*}
+$\zeta$ ist quadratisch über $K_7$ wie die folgende Rechnung zeigt:
+\begin{code}
+ratsimp(z2*(z2-A7)+1); /* 0 */
+\end{code}
 
 \begin{thebibliography}{xxx}
 \bibitem{Graebe2012} Hans-Gert Gräbe. Algorithmen für Zahlen und Primzahlen.
