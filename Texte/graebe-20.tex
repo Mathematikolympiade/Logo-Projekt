@@ -21,7 +21,7 @@
 
 \author{Hans-Gert Gräbe}
 \title{Zur Konstruktion regulärer Polygone} 
-\date{Version vom 31.12.2020}
+\date{Version vom 1.1.2021}
 
 \begin{document} 
 \maketitle         
@@ -55,12 +55,12 @@ $g \pmod p$ samt dem Beweis, dass $\mathrm{ord}(g)=p-1$ in $\Z_p^\ast$ gilt,
 dann den Beweis, dass $p$ eine Primzahl ist.
 
 $\mathrm{ord}(g)=p-1$ gilt genau dann, wenn $g^d\not\equiv 1\pmod p$ für alle
-$d=(p-1)/q$ gilt, wobei $q$ die Primteiler von $p-1$ durchläuft. Auch dies
-kann schnell nachgeprüft werden, wenn die Primteiler von $p-1$ bekannt sind.
-Diese lassen sich erstaunlich oft für den Vorgänger $p-1$ einer Primzahl $p$
-bestimmen. Besonders einfach ist dies natürlich für Primzahlen der Gestalt
-$p=2^k+1$, denn dann hat $p-1$ den einzigen Primteiler $2$, und es kann stets
-$g=3$ als primitive Wurzel genommen werden. 
+$d=(p-1)/q$ erfüllt ist, wobei $q$ die Primteiler von $p-1$ durchläuft. Auch
+dies kann schnell nachgeprüft werden, wenn die Primteiler von $p-1$ bekannt
+sind.  Diese lassen sich erstaunlich oft für den Vorgänger $p-1$ einer
+Primzahl $p$ bestimmen. Besonders einfach ist dies natürlich für Primzahlen
+der Gestalt $p=2^k+1$, denn dann hat $p-1$ den einzigen Primteiler $2$, und es
+kann stets $g=3$ als primitive Wurzel genommen werden.
 
 Für Details sei auf \cite{Graebe2012} verwiesen. 
 
@@ -295,7 +295,7 @@ können also einen Ansatz mit einer solchen Linearkombination mit $2^t$
 generischen Koeffizienten wählen und durch Koeffizientenvergleich bestimmen,
 ob eine solche Darstellung für $A_{t+1}\br{A_{t+1}-A_t}$ existiert. Dies führt
 in $\Q[\zeta]$ auf ein lineares Gleichungssystem mit 257 Gleichungen und $2^t$
-Unbestimmten. Der folgende \textsc{Maxima}-Code setz diese Rechnungen um.
+Unbestimmten. Der folgende \textsc{Maxima}-Code setzt diese Rechnungen um.
 \begin{code}  
 createProducts(vars):=block([f,r],\+\\
   if length(vars)=1 then return (append([1],vars)),\\
@@ -336,7 +336,10 @@ Erläuterungen:
   das Ergebnis in seine Normalform in $K$ als Linearkombination von
   $1=\zeta^0, \zeta,\ldots, \zeta^{256}$.   
 \item $q$ enthält also eine Liste von 257 Linearformen in
-  $a_1,\ldots,a_{2^t}$, deren Nullstelle bestimmt wird.
+  $a_1,\ldots,a_{2^t}$, deren Nullstelle bestimmt wird. Ist $u\in K_t$, so hat
+  dieses System genau eine Lösung, da aus der Theorie bekannt ist, dass die
+  Darstellung als Linearkombination eindeutig ist. Ist $u\not\in K_t$, so hat
+  dieses System keine Lösung.
 \item Im letzten Schritt werden diese Werte für die generischen Koeffizienten
   von $p$ eingesetzt und damit das gesuchte Element aus $K_t$ zurückgegeben,
   sofern das lineare Gleichungssystem eine Lösung besitzt. 
@@ -344,7 +347,9 @@ Erläuterungen:
 Die \emph{Existenz} einer solchen Lösung kann man zahlentheoretisch begründen,
 für unsere Konstruktion würde uns das aber nicht weiterhelfen; wir brauchen
 die konkrete Lösung. Wenn eine solche produziert wird, wissen wir zugleich,
-dass \emph{im untersuchten konkreten Fall} eine solche Lösung existiert. 
+dass \emph{im untersuchten konkreten Fall} eine solche Lösung existiert.  Aus
+dieser lässt sich dann prinzipiell eine Konstruktionsvorschrift für $A_{t+1}$
+aus den bereits konstruierten $A_1,\ldots,A_t$ ableiten. 
 
 Für $A_4$ berechnen wir damit den folgenden Zusammenhang:
 \begin{code}
@@ -430,12 +435,28 @@ $\zeta$ ist quadratisch über $K_7$ wie die folgende Rechnung zeigt:
 \begin{code}
 ratsimp(z2*(z2-A7)+1); /* 0 */
 \end{code}
+Damit haben wir zugleich eine Konstruktionsvorschrift für das 257-Eck
+vorliegen, wenn wir davon ausgehen, dass wir aus der allgemeinen Theorie der
+Konstruktionen mit Zirkel und Lineal wissen, wie beliebige polynomiale
+Ausdrücke in bekannten Streckenlängen konstruiert werden können (das geht
+sogar allein mit einem Lineal).  Da in den Ausdrücken $A_1,\ldots,A_7$ mit
+dem Summanden $\zeta^i$ stets auch $\zeta^{-i}$ ein Summand ist, fallen diese
+mit ihren konjugiert-komplexen Werten zusammen und sind folglich reell.  Wir
+müssen uns bei der Konstruktion dieser Größen also auch nicht mit den (etwas
+komplizierteren) Fragen der Konstruktion über $\C$ beschäftigen (wenn etwa
+zwei Kreise im Reellen keine Schnittpunkten haben und ein Hilfskreis zur
+Konstruktion der Potenzlinie herangezogen werden muss, siehe
+\cite{Graebe-Geo}).
+
 
 \begin{thebibliography}{xxx}
 \bibitem{Graebe2012} Hans-Gert Gräbe. Algorithmen für Zahlen und Primzahlen.
   Eagle Verlag, Leipzig 2012. ISBN 978-3-937219-58-5. 
 \bibitem{Graebe2020} Hans-Gert Gräbe.  Skript zum Kurs \emph{Einführung in das
-  symbolische Rechnen}, Sommersemester 2020.
+  symbolische Rechnen}, Sommersemester 2020.\\
   \url{http://www.informatik.uni-leipzig.de/~graebe/skripte/esr20.pdf}
+\bibitem{Graebe-Geo} Hans-Gert Gräbe.  Skript zum Kurs \emph{Geometrie mit dem
+  Computer}, Sommersemester 2018.\\
+  \url{http://www.informatik.uni-leipzig.de/~graebe/skripte/geometrie18.pdf}
 \end{thebibliography}
 \end{document}
