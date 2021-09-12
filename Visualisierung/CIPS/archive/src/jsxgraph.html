@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+
+    <link rel="stylesheet" href="../TestWithJSXGraph/distrib/jsxgraph.css">
+    <script src="../TestWithJSXGraph/distrib/jsxgraphcore.js"></script>
+    <script src="../TestWithJSXGraph/src/reader/cinderella.js"></script>
+    <script src="../TestWithJSXGraph/src/reader/intergeo.js"></script>
+</head>
+<body>
+
+generated.xml: <div id="box" class="jxgbox" style="width:700px; height:400px;"></div>
+test2.cdy: <div id="box2" class="jxgbox" style="width:700px; height:400px;"></div>
+test.xml: <div id="box3" class="jxgbox" style="width:700px; height:400px;"></div>
+construction.cdy: <div id="box4" class="jxgbox" style="width:700px; height:400px;"></div>
+<script type="text/javascript">
+    board1 = JXG.JSXGraph.loadBoardFromFile('box','../data/intergeo/generated.xml', 'intergeo');
+    board2 = JXG.JSXGraph.loadBoardFromFile('box2', '../data/original/test2.cdy', 'cinderella');
+    board3 = JXG.JSXGraph.loadBoardFromFile('box3', '../data/intergeo/test.xml', 'intergeo');
+    board4 = JXG.JSXGraph.loadBoardFromFile('box4', '../data/original/construction.cdy', 'cinderella');
+</script>
+</body>
+</html>
